@@ -11,6 +11,7 @@ class ControladorVeiculo():
     def cadastrar_veiculo(self):
         dados_veiculo = self.__tela_veiculo.pega_dados_veiculo()
 
+        #Precisar fazer com que os veiculos criados caiam numa lista 
         veiculo = Veiculo(dados_veiculo["modelo"], dados_veiculo["ano"], dados_veiculo["placa"], 
         dados_veiculo["quilometragem"])
 
