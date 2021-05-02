@@ -3,7 +3,7 @@ from entidade.cliente.abstractCliente import AbstractCliente
 from entidade.cliente.ClientePessoaFisica import ClientePessoaFisica
 from entidade.cliente.ClientePessoaJuridica import ClientePessoaJuridica
 
-#teste de commit
+#teste de commit2
 
 class ControladorCliente():
 
