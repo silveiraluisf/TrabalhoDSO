@@ -28,7 +28,9 @@ class ControladorCliente():
         # Método para fazer o cadastro de cliente pessoa física
 
         dados_cliente = self.__tela_cliente.coleta_dados_pessoa_fisica()
-        
+
+        veiculo = self.__controlador_sistema.controlador_veiculo.busca_veiculo_pela_placa(dados_cliente["veiculo"])  # Tem que implementar o busca veiculo
+
         cliente = ClientePessoaFisica(int(dados_cliente["codigo"]), dados_cliente["nome"], dados_cliente["telefone"], dados_cliente["endereco"], dados_cliente["data_nascimento"], dados_cliente["cpf"], dados_cliente["rg"], dados_cliente["orgao_emissor"], dados_cliente["veiculo"])
 
         self.__clientes_pf.append(cliente)
