@@ -18,8 +18,16 @@ class TelaVeiculo():
 
         return {"modelo": modelo, "ano": ano, "placa": placa, "quilometragem": quilometragem}
 
-    def mostrar_dados(self, veiculo):
-        print("Modelo do veiculo: ", veiculo.modelo)
-        print("Ano do veiculo: ", veiculo.ano)
-        print("Placa do veiculo: ", veiculo.placa)
-        print("Quilometragem do veiculo: ", veiculo.quilometragem)
+    #def mostrar_dados(self, veiculo):
+    #    print("Modelo do veiculo: ", veiculo.modelo)
+    #    print("Ano do veiculo: ", veiculo.ano)
+    #    print("Placa do veiculo: ", veiculo.placa)
+    #    print("Quilometragem do veiculo: ", veiculo.quilometragem)
+
+    def mostrar_veiculos(self, dados_veiculo):
+        print("--------DADOS DO VEÍCULO---------")
+        print("MODELO: ", dados_veiculo["modelo"])
+        print("ANO: ", dados_veiculo["placa"])
+        print("PLACA: ", dados_veiculo["ano"])
+        print("QUILOMETRAGEM: ", dados_veiculo["quilometragem"], "km")
+        print("")
