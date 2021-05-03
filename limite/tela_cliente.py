@@ -117,7 +117,7 @@ class TelaCliente:
             try:
                 opcao = int(input("Escolha a opção: "))
 
-            except ValueError:
+            except ValueError: #tratar erro KeyError para escolher entr 1, 2 e 0
                 print("Conteúdo Inválido. Digite o conteúdo correto.")
             else:
                 return opcao
@@ -147,6 +147,32 @@ class TelaCliente:
         print("CNPJ: ", dados_cliente["cnpj"])
         print("VEÍCULO: ", dados_cliente["veiculo"])
         print("")
+
+    def pesquisar_cliente_pf_pelo_nome(self):
+        print("")
+        print("------ Pesquisa de cliente PF:-------")
+        print("")
+        print("")
+
+        nome = input("Digite o nome a ser pesquisado: ")
+        return nome
+
+    def resultado_cliente_pf_pelo_nome(self, dados_cliente):
+        print("====== RESULTADO DA PESQUISA: ======")
+        print("====== CÓDIGO CLIENTE: ", dados_cliente["codigo"],"======")
+        print("")
+        print("NOME CLIENTE: ", dados_cliente["nome"])
+        print("FONE CLIENTE: ", dados_cliente["telefone"])
+        print("END CLIENTE: ", dados_cliente["endereco"])
+        print("DATA NASC.: ", dados_cliente["data_nascimento"])
+        print("CPF: ", dados_cliente["cpf"])
+        print("R.G.: ", dados_cliente["rg"])
+        print("ÓRGÃO EMISSOR: ", dados_cliente["orgao_emissor"])
+        print("VEÍCULO: ", dados_cliente["veiculo"])
+        print("")
+
+
+
 
     def area_em_construcao(self):
         print("================ Opa! =================")

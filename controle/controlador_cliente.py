@@ -29,7 +29,7 @@ class ControladorCliente():
 
         dados_cliente = self.__tela_cliente.coleta_dados_pessoa_fisica()
 
-        veiculo = self.__controlador_sistema.controlador_veiculo.busca_veiculo_pela_placa(dados_cliente["veiculo"])  # Tem que implementar o busca veiculo
+        #veiculo = self.__controlador_sistema.controlador_veiculo.busca_veiculo_pela_placa(dados_cliente["veiculo"])  # Tem que implementar o busca veiculo
 
         cliente = ClientePessoaFisica(int(dados_cliente["codigo"]), dados_cliente["nome"], dados_cliente["telefone"], dados_cliente["endereco"], dados_cliente["data_nascimento"], dados_cliente["cpf"], dados_cliente["rg"], dados_cliente["orgao_emissor"], dados_cliente["veiculo"])
 
@@ -43,7 +43,8 @@ class ControladorCliente():
         # Método para fazer o cadastro de cliente pessoa física
 
         dados_cliente = self.__tela_cliente.coleta_dados_pessoa_juridica()
-        
+        # veiculo = self.__controlador_sistema.controlador_veiculo.busca_veiculo_pela_placa(dados_cliente["veiculo"])  # Tem que implementar o busca veiculo
+
         cliente = ClientePessoaJuridica(dados_cliente["codigo"], dados_cliente["nome"], dados_cliente["telefone"], dados_cliente["endereco"], dados_cliente["data_fundacao"], dados_cliente["cnpj"], dados_cliente["veiculo"])
 
         self.__clientes_pj.append(cliente)
@@ -75,11 +76,48 @@ class ControladorCliente():
         for cliente in self.__clientes_pj:
             self.__tela_cliente.listar_clientes_pj({"codigo": cliente.codigo, "nome": cliente.nome, "telefone": cliente.telefone, "endereco": cliente.endereco, "data_fundacao": cliente.data_fundacao, "cnpj": cliente.cnpj, "veiculo": cliente.veiculo})
     
-    def pegar_cliente_pelo_nome(self):
-        self.abrir_area_em_contrucao()
-        
+    def pesquisar_cliente_pelo_nome(self):
+
+        lista_tipos_cliente = {1: self.pesquisar_cliente_pf_pelo_nome, 2: self.pesquisar_cliente_pj_pelo_nome, 0: self.voltar_tela_cliente}
+
+        continua_tela_cliente = True
+
+        while continua_tela_cliente:
+            lista_tipos_cliente[self.__tela_cliente.tipo_de_cliente()]()
+
+    def pesquisar_cliente_pf_pelo_nome(self):
+
+        nome = self.__tela_cliente.pesquisar_cliente_pf_pelo_nome()
+
+        for cliente in self.__clientes_pf:# "and self.__clientes_pj"
+
+            if nome == cliente.nome: #"or self.__clientes_pj['nome']"
+                #return cliente
+                self.__tela_cliente.resultado_cliente_pf_pelo_nome({'codigo': cliente.codigo, "nome": cliente.nome, "telefone": cliente.telefone, "endereco": cliente.endereco, "data_nascimento": cliente.data_nascimento, "cpf": cliente.cpf, "rg": cliente.rg, "orgao_emissor": cliente.orgao_emissor, "veiculo": cliente.veiculo})
+
+    def pesquisar_cliente_pj_pelo_nome(self, nome: str):
+        pass
+
+
+        #{"codigo": cliente.codigo, "nome": cliente.nome, "telefone": cliente.telefone,"endereco": cliente.endereco, "data_fundacao": cliente.data_fundacao, "cnpj": cliente.cnpj, "veiculo": cliente.veiculo})
+        #self.__clientes_pj[:]
+
+        #nome = self.__tela_cliente.coleta_nome()
+
+        #if self.__clientes_pj or self.__clientes_pj != []:
+        #    for i in self.__clientes_pf and self.__clientes_pj:
+        #        if nome == self.__clientes_pf.
+        #            ['nome'] or self.__clientes_pj['nome']:
+        #            return self.__clientes_pf['nome'] or self.__clientes_pj['nome']
+        #else:
+        #    self.__tela_cliente.cliente_nao_cadastrado()
+
+
+
+        #retorna o objeto
+
     def abre_tela(self):
-        lista_opcoes = {1: self.cadastrar_cliente, 2: self.remover_cliente,  3: self.editar_cliente, 4: self.listar_clientes, 5: self.pegar_cliente_pelo_nome, 0: self.voltar}
+        lista_opcoes = {1: self.cadastrar_cliente, 2: self.remover_cliente, 3: self.editar_cliente, 4: self.listar_clientes, 5: self.pesquisar_cliente_pelo_nome, 0: self.voltar}
 
         continua = True
         while continua:
@@ -94,7 +132,7 @@ class ControladorCliente():
 
     def abrir_area_em_contrucao(self):
         
-        voltar = { 0: self.voltar}
+        voltar = {0: self.voltar}
 
         continua_tela_cliente = True
 
