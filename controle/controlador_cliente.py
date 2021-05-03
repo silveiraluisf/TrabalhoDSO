@@ -52,10 +52,40 @@ class ControladorCliente():
         self.abre_tela()
 
     def remover_cliente(self):
-        self.abrir_area_em_contrucao()
-    
+        escolher_tipo_cliente = {1: self.remover_cliente_pf_pelo_nome, 2: self.remover_cliente_pj_pelo_nome, 0: self.voltar_tela_cliente}
+
+        continua_tela_cliente = True
+
+        while continua_tela_cliente:
+            escolher_tipo_cliente[self.__tela_cliente.tipo_de_cliente()]()
+
+    def remover_cliente_pf_pelo_nome(self):
+
+        nome = self.__tela_cliente.pesquisar_cliente_pf_pelo_nome()
+
+        for cliente in self.__clientes_pf:
+
+            if nome == cliente.nome:
+                self.__clientes_pf.remove(cliente)
+                print("---- OK: Cliente Removido! ----")
+            else:
+                print("Cliente não encontrado")
+
+    def remover_cliente_pj_pelo_nome(self):
+
+        nome = self.__tela_cliente.pesquisar_cliente_pj_pelo_nome()
+
+        for cliente in self.__clientes_pj:
+
+            if nome == cliente.nome:
+                self.__clientes_pj.remove(cliente)
+                print("---- OK: Cliente Removido! ----")
+            else:
+                print("Cliente não encontrado")
+
     def editar_cliente(self):
         self.abrir_area_em_contrucao()
+
     
     def listar_clientes(self):
 
@@ -89,25 +119,21 @@ class ControladorCliente():
 
         nome = self.__tela_cliente.pesquisar_cliente_pf_pelo_nome()
 
-        for cliente in self.__clientes_pf:# "and self.__clientes_pj"
+        for cliente in self.__clientes_pf:
 
-            if nome == cliente.nome: #"or self.__clientes_pj['nome']"
-                #return cliente
+            if nome == cliente.nome:
+
                 self.__tela_cliente.resultado_cliente_pf_pelo_nome({'codigo': cliente.codigo, "nome": cliente.nome, "telefone": cliente.telefone, "endereco": cliente.endereco, "data_nascimento": cliente.data_nascimento, "cpf": cliente.cpf, "rg": cliente.rg, "orgao_emissor": cliente.orgao_emissor, "veiculo": cliente.veiculo})
 
     def pesquisar_cliente_pj_pelo_nome(self):
 
         nome = self.__tela_cliente.pesquisar_cliente_pj_pelo_nome()
 
-        for cliente in self.__clientes_pj:# "and self.__clientes_pj"
+        for cliente in self.__clientes_pj:
 
-            if nome == cliente.nome: #"or self.__clientes_pj['nome']"
-                #return cliente
+            if nome == cliente.nome:
+
                 self.__tela_cliente.resultado_cliente_pj_pelo_nome({"codigo": cliente.codigo, "nome": cliente.nome, "telefone": cliente.telefone, "endereco": cliente.endereco, "data_fundacao": cliente.data_fundacao, "cnpj": cliente.cnpj, "veiculo": cliente.veiculo})
-
-
-
-
 
     def abre_tela(self):
         lista_opcoes = {1: self.cadastrar_cliente, 2: self.remover_cliente, 3: self.editar_cliente, 4: self.listar_clientes, 5: self.pesquisar_cliente_pelo_nome, 0: self.voltar}
