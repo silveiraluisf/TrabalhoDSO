@@ -36,7 +36,7 @@ class ControladorVeiculo():
 
     def listar_veiculos(self):
         for veiculo in self.__veiculos:
-            self.__tela_veiculo.mostrar_dados({"modelo": veiculo.modelo, "ano": veiculo.ano, 
+            self.__tela_veiculo.mostrar_veiculos({"modelo": veiculo.modelo, "ano": veiculo.ano, 
             "placa": veiculo.placa, "quilometragem": veiculo.quilometragem })
 
     #def excluir_veiculo(self):
