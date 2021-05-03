@@ -171,7 +171,27 @@ class TelaCliente:
         print("VEÍCULO: ", dados_cliente["veiculo"])
         print("")
 
+    def pesquisar_cliente_pj_pelo_nome(self):
+        print("")
+        print("------ Pesquisa de cliente PJ:-------")
+        print("")
+        print("")
 
+        nome = input("Digite a razão social a ser pesquisada: ")
+
+        return nome
+
+    def resultado_cliente_pj_pelo_nome(self, dados_cliente):
+        print("====== RESULTADO DA PESQUISA: ======")
+        print("====== CÓDIGO CLIENTE: ", dados_cliente["codigo"],"======")
+        print("")
+        print("RAZÃO SOCIAL CLIENTE: ", dados_cliente["nome"])
+        print("FONE CLIENTE: ", dados_cliente["telefone"])
+        print("END CLIENTE: ", dados_cliente["endereco"])
+        print("DATA FUND..: ", dados_cliente["data_fundacao"])
+        print("CNPJ: ", dados_cliente["cnpj"])
+        print("VEÍCULO: ", dados_cliente["veiculo"])
+        print("")
 
 
     def area_em_construcao(self):

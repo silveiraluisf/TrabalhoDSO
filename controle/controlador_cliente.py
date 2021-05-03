@@ -95,26 +95,19 @@ class ControladorCliente():
                 #return cliente
                 self.__tela_cliente.resultado_cliente_pf_pelo_nome({'codigo': cliente.codigo, "nome": cliente.nome, "telefone": cliente.telefone, "endereco": cliente.endereco, "data_nascimento": cliente.data_nascimento, "cpf": cliente.cpf, "rg": cliente.rg, "orgao_emissor": cliente.orgao_emissor, "veiculo": cliente.veiculo})
 
-    def pesquisar_cliente_pj_pelo_nome(self, nome: str):
-        pass
+    def pesquisar_cliente_pj_pelo_nome(self):
 
+        nome = self.__tela_cliente.pesquisar_cliente_pj_pelo_nome()
 
-        #{"codigo": cliente.codigo, "nome": cliente.nome, "telefone": cliente.telefone,"endereco": cliente.endereco, "data_fundacao": cliente.data_fundacao, "cnpj": cliente.cnpj, "veiculo": cliente.veiculo})
-        #self.__clientes_pj[:]
+        for cliente in self.__clientes_pj:# "and self.__clientes_pj"
 
-        #nome = self.__tela_cliente.coleta_nome()
-
-        #if self.__clientes_pj or self.__clientes_pj != []:
-        #    for i in self.__clientes_pf and self.__clientes_pj:
-        #        if nome == self.__clientes_pf.
-        #            ['nome'] or self.__clientes_pj['nome']:
-        #            return self.__clientes_pf['nome'] or self.__clientes_pj['nome']
-        #else:
-        #    self.__tela_cliente.cliente_nao_cadastrado()
+            if nome == cliente.nome: #"or self.__clientes_pj['nome']"
+                #return cliente
+                self.__tela_cliente.resultado_cliente_pj_pelo_nome({"codigo": cliente.codigo, "nome": cliente.nome, "telefone": cliente.telefone, "endereco": cliente.endereco, "data_fundacao": cliente.data_fundacao, "cnpj": cliente.cnpj, "veiculo": cliente.veiculo})
 
 
 
-        #retorna o objeto
+
 
     def abre_tela(self):
         lista_opcoes = {1: self.cadastrar_cliente, 2: self.remover_cliente, 3: self.editar_cliente, 4: self.listar_clientes, 5: self.pesquisar_cliente_pelo_nome, 0: self.voltar}
