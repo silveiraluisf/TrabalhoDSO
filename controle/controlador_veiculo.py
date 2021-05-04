@@ -27,7 +27,7 @@ class ControladorVeiculo():
         self.abre_tela()
 
     def pesquisar_veiculo_placa(self):
-        
+        #metodo que permite encontrar um veiculo especifico pela placa 
         placa = self.__tela_veiculo.pesquisar_veiculo_placa()
 
         for veiculo in self.__veiculos:
