@@ -1,4 +1,4 @@
-from dao import DAO
+from persistencia.DAO import DAO
 from entidade.veiculo.veiculo import Veiculo 
 
 class VeiculoDAO(DAO):

@@ -1,4 +1,4 @@
-from dao import DAO
+from persistencia.DAO import DAO
 from entidade.cliente.ClientePessoaJuridica import ClientePessoaJuridica
 from entidade.cliente.ClientePessoaFisica import ClientePessoaFisica
 

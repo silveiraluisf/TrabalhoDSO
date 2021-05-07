@@ -1,4 +1,4 @@
-from dao import DAO
+from persistencia.DAO import DAO
 from entidade.revisao.revisao import Revisao 
 
 class RevisaoDAO(DAO):
