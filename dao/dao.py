@@ -17,6 +17,10 @@ class DAO(ABC):
     def __load(self):
         self.__cache = pickle.load(open(self.__datasource, 'rb'))
 
+    def add(self, key, obj):
+        self.__cache[key] = obj
+        self.__dumb()
+
     def get(self, key):
         try: 
             return self.__cache[key]

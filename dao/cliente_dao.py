@@ -1,6 +1,6 @@
-from dao.dao import DAO
-from entidade.ClientePessoaJuridica import ClientePessoaJuridica
-from entidade.ClientePessoaFisica import ClientePessoaFisica
+from dao import DAO
+from entidade.cliente.ClientePessoaJuridica import ClientePessoaJuridica
+from entidade.cliente.ClientePessoaFisica import ClientePessoaFisica
 
 class ClienteDAO(DAO):
     def __init__(self):
@@ -8,7 +8,7 @@ class ClienteDAO(DAO):
 
     def add(self, cliente: ClientePessoaFisica):
         if (isinstance(cliente.cpf, int)) and (cliente is not None) and \
-        isinstance((cliente, ClientePessoaFisica) or (cliente, ClientePessoaJuridica)):
+                isinstance((cliente, ClientePessoaFisica) or (cliente, ClientePessoaJuridica)):
             super().add(cliente.cpf, cliente)
 
     def get(self, key: int):

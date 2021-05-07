@@ -1,13 +1,13 @@
-from dao.dao import DAO
-from entidade.veiculo import Veiculo
+from dao import DAO
+from entidade.veiculo.veiculo import Veiculo 
 
 class VeiculoDAO(DAO):
     def __init__(self):
         super().__init__('veiculo.pkl')
 
     def add(self, veiculo: Veiculo):
-        if (isinstance(veiculo.placa, int)) and (veiculo is not None) and \
-        isinstance(veiculo, Veiculo):
+        if (isinstance(veiculo.placa, int)) and (veiculo is not None) \
+                and isinstance(veiculo, Veiculo):
             super().add(veiculo.placa, veiculo)
 
     def get(self, key: int):
