@@ -1,3 +1,6 @@
+from dao.dao import DAO
+from entidade.veiculo import Veiculo
+
 class VeiculoDAO(DAO):
     def __init__(self):
         super().__init__('veiculo.pkl')

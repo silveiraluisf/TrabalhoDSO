@@ -1,3 +1,6 @@
+from dao.dao import DAO
+from entidade.revisao import Revisao 
+
 class RevisaoDAO(DAO):
     def __init__(self):
         super().__init__('revisao.pkl')

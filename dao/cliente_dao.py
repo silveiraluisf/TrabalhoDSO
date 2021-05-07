@@ -1,3 +1,6 @@
+from dao.dao import DAO
+from entidade.ClientePessoaJuridica import ClientePessoaJuridica
+from entidade.ClientePessoaFisica import ClientePessoaFisica
 
 class ClienteDAO(DAO):
     def __init__(self):
