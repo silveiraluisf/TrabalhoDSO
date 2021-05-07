@@ -31,9 +31,9 @@ class TelaCliente:
 
     def coleta_dados_pessoa_fisica(self):
         # coleta dados de cliente pessoa física
-        print("Abrir tela pra coletar dados Pessia Física")
-        print("-------- Cadastrar Cliente ---------")
-        print("----------- PESSOA FÍSICA ----------")
+        print("---------- Coleta de dados ---------")
+        print("------------- Cliente --------------")
+        print("---------- PESSOA FÍSICA -----------")
         
         #gera o código automaticamente (verificar como fazer isso"
         
@@ -64,6 +64,8 @@ class TelaCliente:
         veiculo = input("Veículo: ")
 
         return {"codigo":codigo, "nome": nome, "telefone": telefone, "endereco": endereco, "data_nascimento": data_nascimento, "cpf": cpf, "rg": rg, "orgao_emissor": orgao_emissor, "veiculo": veiculo}
+
+
 
     def coleta_dados_pessoa_juridica(self):
 
@@ -155,6 +157,8 @@ class TelaCliente:
         print("")
 
         nome = input("Digite o nome a ser pesquisado: ")
+
+
         return nome
 
     def pesquisar_cliente_pj_pelo_nome(self):
