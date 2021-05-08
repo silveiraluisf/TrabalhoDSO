@@ -1,38 +1,38 @@
-from abc import ABC, abstractmethod  
-import pickle
+#from abc import ABC, abstractmethod  
+#import pickle
 
-class DAO(ABC):
-    def __init(self, datasource = ''):
-        self.__datasource = datasource
-        self.__cache = {}
-        try:
-            self.__load()
+#class DAO(ABC):
+#    def __init(self, datasource = ''):
+#        self.__datasource = datasource
+#        self.__cache = {}
+#        try:
+#            self.__load()
 
-        except FileNotFoundError:
-            self.__dumb()
+#        except FileNotFoundError:
+#            self.__dumb()
 
-    def __dumb(self):
-        pickle.dump(self.__cache, open(self.__datasource, 'wb'))
+#    def __dumb(self):
+#        pickle.dump(self.__cache, open(self.__datasource, 'wb'))
 
-    def __load(self):
-        self.__cache = pickle.load(open(self.__datasource, 'rb'))
+#    def __load(self):
+#        self.__cache = pickle.load(open(self.__datasource, 'rb'))
 
-    def add(self, key, obj):
-        self.__cache[key] = obj
-        self.__dumb()
+#    def add(self, key, obj):
+#        self.__cache[key] = obj
+#        self.__dumb()
 
-    def get(self, key):
-        try: 
-            return self.__cache[key]
-        except KeyError:
-            pass 
+#    def get(self, key):
+#        try: 
+#            return self.__cache[key]
+#        except KeyError:
+#            pass 
 
-    def remove(self, key):
-        try:
-            self.__cache.pop(key)
-            self.__dumb()
-        except KeyError:
-            pass 
+#    def remove(self, key):
+#        try:
+#            self.__cache.pop(key)
+#            self.__dumb()
+#        except KeyError:
+#            pass 
 
-    def get_all(self):
-        return self.__cache.values()
+#    def get_all(self):
+#        return self.__cache.values()

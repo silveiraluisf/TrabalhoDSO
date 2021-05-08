@@ -1,18 +1,18 @@
-from persistencia.DAO import DAO
-from entidade.veiculo.veiculo import Veiculo 
+#from persistencia.DAO import DAO
+#from entidade.veiculo.veiculo import Veiculo 
 
-class VeiculoDAO(DAO):
-    def __init__(self):
-        super().__init__('veiculo.pkl')
+#class VeiculoDAO(DAO):
+#    def __init__(self):
+#        super().__init__('veiculo.pkl')
 
-    def add(self, veiculo: Veiculo):
-        if (isinstance(veiculo.placa, int)) and (veiculo is not None) \
-                and isinstance(veiculo, Veiculo):
-            super().add(veiculo.placa, veiculo)
+#    def add(self, veiculo: Veiculo):
+#        if (isinstance(veiculo.placa, int)) and (veiculo is not None) \
+#                and isinstance(veiculo, Veiculo):
+#            super().add(veiculo.placa, veiculo)
 
-    def get(self, key: int):
-        if isinstance(key, int):
-            return super().get(key)
+#    def get(self, key: int):
+#        if isinstance(key, int):
+#            return super().get(key)
 
-    def remove(self, key: int):
-        return super().remove(key) 
+#    def remove(self, key: int):
+#        return super().remove(key) 
