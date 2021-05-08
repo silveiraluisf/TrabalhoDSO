@@ -1,21 +1,21 @@
-from persistencia.DAO import DAO
-from entidade.cliente.ClientePessoaJuridica import ClientePessoaJuridica
-from entidade.cliente.ClientePessoaFisica import ClientePessoaFisica
+#from persistencia.DAO import DAO
+#from entidade.cliente.ClientePessoaJuridica import ClientePessoaJuridica
+#from entidade.cliente.ClientePessoaFisica import ClientePessoaFisica
 
-class ClienteDAO(DAO):
-    def __init__(self):
-        super().__init__('cliente.pkl')
+#class ClienteDAO(DAO):
+#    def __init__(self):
+#        super().__init__('cliente.pkl')
 
-    def add(self, cliente: ClientePessoaFisica):
-        if (isinstance(cliente.cpf, int)) and (cliente is not None) and \
-                isinstance((cliente, ClientePessoaFisica) or (cliente, ClientePessoaJuridica)):
-            super().add(cliente.cpf, cliente)
+#    def add(self, cliente: ClientePessoaFisica):
+#        if (isinstance(cliente.cpf, int)) and (cliente is not None) and \
+#                isinstance((cliente, ClientePessoaFisica) or (cliente, ClientePessoaJuridica)):
+#            super().add(cliente.cpf, cliente)
 
-    def get(self, key: int):
-        if isinstance(key, int):
-            return super().get(key)
+#    def get(self, key: int):
+#        if isinstance(key, int):
+#            return super().get(key)
 
-    def remove(self, key: int):
-        return super().remove(key)
+#    def remove(self, key: int):
+#        return super().remove(key)
 
     

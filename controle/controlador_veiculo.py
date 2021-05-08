@@ -34,36 +34,38 @@ class ControladorVeiculo():
             if placa == veiculo.placa:
                 self.__tela_veiculo.resultado_veiculo_placa({"modelo": veiculo.modelo, "placa": veiculo.placa, "ano": veiculo.ano, "quilometragem": veiculo.quilometragem})
 
-    #def editar_veiculo(self):
-      
-    #    novo_modelo = input("Informe o novo modelo:")
-    #    self.__veiculo.modelo = novo_modelo
+            return veiculo 
 
-    #   novo_ano = input("Informe o novo ano:")
-    #    self.__veiculo.ano = novo_ano
+    def editar_veiculo(self):
 
-    #    nova_placa = input("Informe a nova placa:")
-    #    self.__veiculo.placa = nova_placa
+        veiculo_pesquisado = self.pesquisar_veiculo_placa()
 
-    #    nova_quilometragem = input("Informe a nova quilometragem:")
-    #    self.__veiculo.quilometragem = nova_quilometragem
+        for veiculo in range(len(self.__veiculos)):
+            if self.__veiculos[veiculo].placa == veiculo_pesquisado.placa:
+                novo_veiculo = self.__tela_veiculo.pega_dados_veiculo()
 
-    #    novo_veiculo = Veiculo(novo_modelo, novo_ano, nova_placa, nova_quilometragem)
-    #    self.__veiculo = novo_veiculo
+                veiculo_editado = Veiculo(novo_veiculo["modelo"], novo_veiculo["placa"], novo_veiculo["ano"], novo_veiculo["quilometragem"])
 
-    #def excluir_veiculo(self):
-    #  veiculo = self.__veiculo 
-    # del (veiculo)
-        
-    #def mostrar_veiculo(self):
-    #  veiculo = self.__veiculo
-    #  self.__tela_veiculo.mostrar_dados(veiculo)
+                self.__veiculos[veiculo] = veiculo_editado
+
+                self.abre_tela()
+
+    def excluir_veiculo(self):
+        placa = self.__tela_veiculo.pesquisar_veiculo_placa()
+
+        for veiculo in self.__veiculos:
+            if placa == veiculo.placa:
+                self.__veiculos.remove(veiculo) 
+                print("----OK: Veículo removido! ----")
+        else: 
+            print("Veiculo não encontrado")
        
     def voltar(self):
-        pass
+        self.abre_tela()
     
     def abre_tela(self):
-        lista_opcoes = {1: self.cadastrar_veiculo, 2: self.listar_veiculos, 3: self.pesquisar_veiculo_placa, 0: self.voltar}
+        lista_opcoes = {1: self.cadastrar_veiculo, 2: self.listar_veiculos, 3: self.pesquisar_veiculo_placa, 
+        4: self.editar_veiculo, 5: self.excluir_veiculo, 0: self.voltar}
 
         lista_opcoes[self.__tela_veiculo.tela_opcoes()]()
 

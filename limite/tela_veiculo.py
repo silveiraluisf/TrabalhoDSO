@@ -6,9 +6,19 @@ class TelaVeiculo():
         print("1 - Criar veiculo")
         print("2 - Listar veiculos")
         print("3 - Pesquisar veiculo pela placa")
+        print("4 - Editar veiculo")
+        print("5 - Excluir veiculo")
         print("0 - Voltar")
-        opcao = int(input("Escolha a opcao: "))
-        return opcao
+
+        while True:
+            try:
+                opcao = int(input("Escolha a opcao: "))
+        
+            except ValueError:
+                print("Comando inválido. Digite um comando válido")
+            
+            else:
+                return opcao
 
     def pega_dados_veiculo(self):
         print("-------Incluir Veiculo-------")
@@ -46,8 +56,3 @@ class TelaVeiculo():
         print("QUILOMETRAGEM: ", dados_veiculo["quilometragem"], "km")
         print("")
 
-    #def mostrar_dados(self, veiculo):
-    #    print("Modelo do veiculo: ", veiculo.modelo)
-    #    print("Ano do veiculo: ", veiculo.ano)
-    #    print("Placa do veiculo: ", veiculo.placa)
-    #    print("Quilometragem do veiculo: ", veiculo.quilometragem)
