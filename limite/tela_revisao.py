@@ -9,6 +9,8 @@ class TelaRevisao():
         return opcao
 
     def listar_revisoes(self, lista_substituicoes, lista_verificacoes):
+        print("")
+        print("------- LISTA DOS ITENS DE REVISÃO: ---------")
 
         for i in lista_substituicoes:
             print("[  ] ", i.descricao)
