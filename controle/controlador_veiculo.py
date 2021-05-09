@@ -50,6 +50,9 @@ class ControladorVeiculo():
                 self.__dao.add(veiculo_editado)
                 break
 
+        else: 
+            print("Veiculo não encontrado")
+
         self.abre_tela()
 
     def excluir_veiculo(self):
@@ -72,5 +75,8 @@ class ControladorVeiculo():
         lista_opcoes = {1: self.cadastrar_veiculo, 2: self.listar_veiculos, 3: self.pesquisar_veiculo_placa, 
         4: self.editar_veiculo, 5: self.excluir_veiculo, 0: self.voltar}
 
-        lista_opcoes[self.__tela_veiculo.tela_opcoes()]()
+        continua_tela_cliente = True
+
+        while continua_tela_cliente:
+            lista_opcoes[self.__tela_veiculo.tela_opcoes()]()
 
