@@ -3,7 +3,7 @@ from entidade.veiculo.veiculo import Veiculo
  
 class ClientePessoaFisica(AbstractCliente):
      
-    def __init__(self, codigo: int, nome: str, telefone: int, endereco: str, data_nascimento: str, cpf: str, rg: str, orgao_emissor: str, veiculo:str):
+    def __init__(self, codigo: int, nome: str, telefone: int, endereco: str, data_nascimento: str, cpf: str, rg: str, orgao_emissor: str, veiculo: Veiculo):
          super().__init__(codigo, nome, telefone, endereco)
          self.__data_nascimento = data_nascimento
          self.__cpf = cpf
@@ -16,7 +16,7 @@ class ClientePessoaFisica(AbstractCliente):
         return self.__data_nascimento
 
     @data_nascimento.setter
-    def data_nascimento(self):
+    def data_nascimento(self, data_nascimento: str):
         if isinstance (data_nascimento, str):
             self.__data_nascimento = data_nascimento
             
@@ -25,7 +25,7 @@ class ClientePessoaFisica(AbstractCliente):
         return self.__cpf
     
     @cpf.setter
-    def cpf(self):
+    def cpf(self, cpf: str):
         if isinstance (cpf, str):
             self.cpf = cpf
 
@@ -34,7 +34,7 @@ class ClientePessoaFisica(AbstractCliente):
         return self.__rg
 
     @rg.setter
-    def rg(self):
+    def rg(self, rg: str):
         if isinstance (rg, str):
             self.rg = rg
 
@@ -43,7 +43,7 @@ class ClientePessoaFisica(AbstractCliente):
         return self.__orgao_emissor
     
     @orgao_emissor.setter
-    def orgao_emissor(self):
+    def orgao_emissor(self, orgao_emissor: str):
         if isinstance (orgao_emissor, str):
             self.__orgao_emissor = orgao_emissor
 
@@ -52,7 +52,7 @@ class ClientePessoaFisica(AbstractCliente):
         return self.__veiculo
  
     @veiculo.setter
-    def veiculo(self): #confirmar se é isso mesmo
+    def veiculo(self, veiculo: Veiculo): #confirmar se é isso mesmo
         if isinstance(veiculo, str):
             self.__veiculo = veiculo
 
