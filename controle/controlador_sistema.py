@@ -28,6 +28,7 @@ class ControladorSistema():
             funcao_escolhida()
 
     def abrir_controlador_cliente(self):
+        # Chama o controlador de Cliente
         self.__controlador_cliente.abre_tela()
 
     def iniciar_revisao(self):
