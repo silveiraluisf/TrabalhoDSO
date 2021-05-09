@@ -39,6 +39,8 @@ class ControladorCliente():
         
         self.__dao_pf.add(cliente)
 
+        self.__tela_cliente.sucesso()
+
         self.abre_tela()
 
 
@@ -54,6 +56,8 @@ class ControladorCliente():
         dados_cliente["endereco"], dados_cliente["data_fundacao"], dados_cliente["cnpj"], dados_veiculo)
 
         self.__dao_pj.add(cliente)
+
+        self.__tela_cliente.sucesso()
 
         self.abre_tela()
 
@@ -71,13 +75,16 @@ class ControladorCliente():
 
         for cliente in self.__dao_pf.get_all():
 
-            if nome == cliente.nome:
-                self.__dao_pf.remove(cliente)
-                print("---- OK: Cliente Removido! ----")
-                break
+            if nome != cliente.nome:
+                pass
 
             else:
-                print("Cliente não encontrado")
+                self.__dao_pf.remove(cliente)
+                self.__tela_cliente.sucesso()
+                self.abre_tela()
+
+        self.__tela_cliente.falha()
+        self.remover_cliente_pf_pelo_nome()
 
     def remover_cliente_pj_pelo_nome(self):
 
@@ -85,13 +92,16 @@ class ControladorCliente():
 
         for cliente in self.__dao_pj.get_all():
 
-            if nome == cliente.nome:
-                self.__dao_pj.remove(cliente)
-                print("---- OK: Cliente Removido! ----")
-                break
+            if nome != cliente.nome:
+                pass
 
             else:
-                print("Cliente não encontrado")
+                self.__dao_pj.remove(cliente)
+                self.__tela_cliente.sucesso()
+                self.abre_tela()
+
+        self.__tela_cliente.falha()
+        self.remover_cliente_pf_pelo_nome()
 
     def editar_cliente(self):
         escolher_tipo_cliente = {1: self.editar_cliente_pf, 2: self.editar_cliente_pj, 0: self.voltar_tela_cliente}
@@ -108,7 +118,10 @@ class ControladorCliente():
         for cliente in self.__dao_pf.get_all():
 
             if nome == cliente.nome:
+
                 novas_infos_cliente = self.__tela_cliente.coleta_dados_pessoa_fisica()
+
+                novo_veiculo = self.__controlador_sistema.pegar_veiculo()
 
                 cliente_editado = ClientePessoaFisica(int(novas_infos_cliente["codigo"]), novas_infos_cliente["nome"],
                                                       novas_infos_cliente["telefone"],
@@ -116,7 +129,7 @@ class ControladorCliente():
                                                       novas_infos_cliente["data_nascimento"],
                                                       novas_infos_cliente["cpf"],
                                                       novas_infos_cliente["rg"], novas_infos_cliente["orgao_emissor"],
-                                                      novas_infos_cliente["veiculo"])
+                                                      novo_veiculo)
 
                 self.__dao_pf.remove(cliente)
                 self.__dao_pf.add(cliente_editado)
@@ -131,12 +144,15 @@ class ControladorCliente():
         for cliente in self.__dao_pj.get_all():
 
             if nome == cliente.nome:
+
                 novas_infos_cliente = self.__tela_cliente.coleta_dados_pessoa_juridica()
+
+                novo_veiculo = self.__controlador_sistema.pegar_veiculo()
 
                 cliente_editado = ClientePessoaJuridica(novas_infos_cliente["codigo"], novas_infos_cliente["nome"],
                                                         novas_infos_cliente["telefone"], novas_infos_cliente["endereco"],
                                                         novas_infos_cliente["data_fundacao"], novas_infos_cliente["cnpj"],
-                                                        novas_infos_cliente["veiculo"])
+                                                        novo_veiculo)
 
                 self.__dao_pj.remove(cliente)
                 self.__dao_pj.add(cliente_editado)
@@ -156,20 +172,29 @@ class ControladorCliente():
  
     def listar_clientes_pf(self):
 
+        self.__tela_cliente.inicio_de_lista()
+
         for cliente in self.__dao_pf.get_all():
             self.__tela_cliente.listar_clientes_pf({'codigo': cliente.codigo, "nome": cliente.nome, 
             "telefone": cliente.telefone, "endereco": cliente.endereco, "data_nascimento": cliente.data_nascimento, 
             "cpf": cliente.cpf, "rg": cliente.rg, "orgao_emissor": cliente.orgao_emissor, 
             "veiculo": cliente.veiculo.modelo, "placa": cliente.veiculo.placa})
+
+        self.__tela_cliente.fim_de_lista()
+
         self.abre_tela()
 
     def listar_clientes_pj(self):
 
+        self.__tela_cliente.inicio_de_lista()
+
         for cliente in self.__dao_pj.get_all():
             self.__tela_cliente.listar_clientes_pj({"codigo": cliente.codigo, "nome": cliente.nome, 
             "telefone": cliente.telefone, "endereco": cliente.endereco, "data_fundacao": cliente.data_fundacao, 
-            "cnpj": cliente.cnpj, "veiculo": cliente.veiculo})
-    
+            "cnpj": cliente.cnpj, "veiculo": cliente.veiculo.modelo, "placa": cliente.veiculo.placa})
+
+        self.__tela_cliente.fim_de_lista()
+
         self.abre_tela()
 
     def pesquisar_cliente_pelo_nome(self):
@@ -192,9 +217,13 @@ class ControladorCliente():
                 self.__tela_cliente.resultado_cliente_pf_pelo_nome(
                     {'codigo': cliente.codigo, "nome": cliente.nome, "telefone": cliente.telefone,
                      "endereco": cliente.endereco, "data_nascimento": cliente.data_nascimento, "cpf": cliente.cpf,
-                     "rg": cliente.rg, "orgao_emissor": cliente.orgao_emissor, "veiculo": cliente.veiculo})
+                     "rg": cliente.rg, "orgao_emissor": cliente.orgao_emissor, "veiculo": cliente.veiculo.modelo,
+                     "placa": cliente.veiculo.placa})
 
-        return cliente
+                return cliente
+
+        self.__tela_cliente.falha()
+        self.pesquisar_cliente_pf_pelo_nome()
 
 
 
@@ -209,9 +238,12 @@ class ControladorCliente():
                 self.__tela_cliente.resultado_cliente_pj_pelo_nome(
                     {"codigo": cliente.codigo, "nome": cliente.nome, "telefone": cliente.telefone,
                      "endereco": cliente.endereco, "data_fundacao": cliente.data_fundacao, "cnpj": cliente.cnpj,
-                     "veiculo": cliente.veiculo})
+                     "veiculo": cliente.veiculo.modelo, "placa": cliente.veiculo.placa})
 
-        return cliente
+                return cliente
+
+        self.__tela_cliente.falha()
+        self.pesquisar_cliente_pj_pelo_nome()
 
     def abre_tela(self):
         lista_opcoes = {1: self.cadastrar_cliente, 2: self.remover_cliente, 3: self.editar_cliente, 4: self.listar_clientes, 5: self.pesquisar_cliente_pelo_nome, 0: self.voltar}

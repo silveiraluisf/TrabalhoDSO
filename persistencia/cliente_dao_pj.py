@@ -6,7 +6,7 @@ class ClientePJDAO(DAO):
         super().__init__('clientepj.pkl')
     
     def add(self, cliente: ClientePessoaJuridica):
-        if  (cliente is not None) \
+        if (cliente is not None) \
                 and isinstance(cliente, ClientePessoaJuridica):
             super().add(cliente.cnpj, cliente)
 
@@ -16,6 +16,6 @@ class ClientePJDAO(DAO):
             return super().get(cliente.cnpj)
 
     def remove(self, cliente: ClientePessoaJuridica):
-         if  (cliente is not None) \
+         if (cliente is not None) \
                   and isinstance(cliente, ClientePessoaJuridica):
             super().remove(cliente.cnpj)

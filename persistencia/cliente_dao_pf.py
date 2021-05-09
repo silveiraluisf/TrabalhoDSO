@@ -6,7 +6,7 @@ class ClientePFDAO(DAO):
         super().__init__('clientepf.pkl')
 
     def add(self, cliente: ClientePessoaFisica):
-        if  (cliente is not None) \
+        if (cliente is not None) \
                 and isinstance(cliente, ClientePessoaFisica):
             super().add(cliente.cpf, cliente)
 
@@ -16,7 +16,7 @@ class ClientePFDAO(DAO):
             return super().get(cliente.cpf)
 
     def remove(self, cliente: ClientePessoaFisica):
-         if  (cliente is not None) \
+         if (cliente is not None) \
                   and isinstance(cliente, ClientePessoaFisica):
             super().remove(cliente.cpf)
 
@@ -24,4 +24,3 @@ class ClientePFDAO(DAO):
 
 
 
-    
