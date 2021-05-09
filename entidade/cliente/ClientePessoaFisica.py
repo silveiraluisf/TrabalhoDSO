@@ -53,7 +53,7 @@ class ClientePessoaFisica(AbstractCliente):
  
     @veiculo.setter
     def veiculo(self, veiculo: Veiculo): #confirmar se é isso mesmo
-        if isinstance(veiculo, str):
+        if isinstance(veiculo, Veiculo):
             self.__veiculo = veiculo
 
 
