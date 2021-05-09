@@ -3,7 +3,7 @@ from entidade.veiculo.veiculo import Veiculo
  
 class ClientePessoaJuridica(AbstractCliente):
         
-    def __init__(self, codigo: int, nome: str, telefone: int,endereco: str, data_fundacao: str, cnpj: str, veiculo:str):
+    def __init__(self, codigo: int, nome: str, telefone: int,endereco: str, data_fundacao: str, cnpj: str, veiculo: Veiculo):
             super().__init__(codigo, nome, telefone, endereco)
             self.__data_fundacao = data_fundacao
             self.__cnpj = cnpj
@@ -14,7 +14,7 @@ class ClientePessoaJuridica(AbstractCliente):
         return self.__data_fundacao
 
     @data_fundacao.setter
-    def data_fundacao(self):
+    def data_fundacao(self, data_fundacao: str):
         if isinstance(data_fundacao,str):
             self.__data_fundacao = data_fundacao
             
@@ -23,7 +23,7 @@ class ClientePessoaJuridica(AbstractCliente):
         return self.__cnpj
 
     @cnpj.setter
-    def cnpj(self):
+    def cnpj(self, cnpj: str):
         if isinstance(cnpj, str):
             self.cnpj = cnpj
 
@@ -32,7 +32,7 @@ class ClientePessoaJuridica(AbstractCliente):
         return self.__veiculo
 
     @veiculo.setter
-    def veiculo(self):
-        if isinstance(veiculo, str):
+    def veiculo(self, veiculo: Veiculo):
+        if isinstance(veiculo, Veiculo):
             self.__veiculo = veiculo
 

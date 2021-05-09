@@ -21,7 +21,8 @@ class TelaVeiculo():
                 return opcao
 
     def pega_dados_veiculo(self):
-        print("-------Incluir Veiculo-------")
+        print("")
+        print("------- INSIRA OS DADOS DO VEÍCULO: -------")
         modelo = input("Modelo: ")
         placa = input("Placa: ")
         ano = input("Ano: ")
@@ -30,6 +31,7 @@ class TelaVeiculo():
         return {"modelo": modelo, "placa": placa, "ano": ano, "quilometragem": quilometragem}
 
     def mostrar_veiculos(self, dados_veiculo):
+        print("")
         print("--------DADOS DO VEÍCULO---------")
         print("MODELO: ", dados_veiculo["modelo"])
         print("PLACA: ", dados_veiculo["placa"])
@@ -39,11 +41,11 @@ class TelaVeiculo():
 
     def pesquisar_veiculo_placa(self):
         print("")
-        print("------ Pesquisa de veiculo pela placa:-------")
+        print("------ DIGITE A PLACA DO VEÍCULO: -------")
         print("")
         print("")
 
-        placa = input("Digite a placa a ser pesquisada: ")
+        placa = input("Placa do veículo: ")
         
         return placa
 
