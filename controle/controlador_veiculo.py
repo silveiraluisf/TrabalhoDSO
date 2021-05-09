@@ -67,7 +67,18 @@ class ControladorVeiculo():
             print("Veiculo não encontrado")
 
         self.abre_tela()
-       
+
+    def pegar_veiculo(self):
+        placa = self.__tela_veiculo.pesquisar_veiculo_placa()
+
+        for veiculo in self.__dao.get_all():
+            if placa == veiculo.placa:
+                self.__dao.get(veiculo)
+            return veiculo 
+        
+        #else: 
+        #    print("Veiculo não encontrado")
+         
     def voltar(self):
         self.__controlador_sistema.abre_tela()
     
