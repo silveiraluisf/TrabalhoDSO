@@ -3,7 +3,8 @@ from entidade.veiculo.veiculo import Veiculo
  
 class ClientePessoaFisica(AbstractCliente):
      
-    def __init__(self, codigo: int, nome: str, telefone: int, endereco: str, data_nascimento: str, cpf: str, rg: str, orgao_emissor: str, veiculo: Veiculo):
+    def __init__(self, codigo: int, nome: str, telefone: int, endereco: str,
+                 data_nascimento: str, cpf: str, rg: str, orgao_emissor: str, veiculo: Veiculo):
          super().__init__(codigo, nome, telefone, endereco)
          self.__data_nascimento = data_nascimento
          self.__cpf = cpf
@@ -26,7 +27,7 @@ class ClientePessoaFisica(AbstractCliente):
     
     @cpf.setter
     def cpf(self, cpf: str):
-        if isinstance (cpf, str):
+        if isinstance(cpf, str):
             self.cpf = cpf
 
     @property
@@ -35,7 +36,7 @@ class ClientePessoaFisica(AbstractCliente):
 
     @rg.setter
     def rg(self, rg: str):
-        if isinstance (rg, str):
+        if isinstance(rg, str):
             self.rg = rg
 
     @property
@@ -44,7 +45,7 @@ class ClientePessoaFisica(AbstractCliente):
     
     @orgao_emissor.setter
     def orgao_emissor(self, orgao_emissor: str):
-        if isinstance (orgao_emissor, str):
+        if isinstance(orgao_emissor, str):
             self.__orgao_emissor = orgao_emissor
 
     @property
@@ -56,5 +57,3 @@ class ClientePessoaFisica(AbstractCliente):
         if isinstance(veiculo, Veiculo):
             self.__veiculo = veiculo
 
-
- 
