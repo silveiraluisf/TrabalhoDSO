@@ -43,6 +43,10 @@ class ControladorSistema():
         veiculo = self.__controlador_veiculo.pegar_veiculo()
         return veiculo
 
+    def pegar_cliente_pf(self):
+        cliente = self.__controlador_cliente.pegar_cliente_pf()
+        return cliente
+
     def encerra_sistema(self):
 
         exit(0)
