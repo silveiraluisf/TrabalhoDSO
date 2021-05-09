@@ -61,9 +61,9 @@ class TelaCliente:
         cpf = input("CPF: ")
         rg = input("R.G.: ")
         orgao_emissor = input("Órgão Emissor: ")
-        veiculo = input("Veículo: ")
+        #veiculo = input("Veículo: ")
 
-        return {"codigo":codigo, "nome": nome, "telefone": telefone, "endereco": endereco, "data_nascimento": data_nascimento, "cpf": cpf, "rg": rg, "orgao_emissor": orgao_emissor, "veiculo": veiculo}
+        return {"codigo":codigo, "nome": nome, "telefone": telefone, "endereco": endereco, "data_nascimento": data_nascimento, "cpf": cpf, "rg": rg, "orgao_emissor": orgao_emissor}
 
 
 
@@ -136,6 +136,7 @@ class TelaCliente:
         print("R.G.: ", dados_cliente["rg"])
         print("ÓRGÃO EMISSOR: ", dados_cliente["orgao_emissor"])
         print("VEÍCULO: ", dados_cliente["veiculo"])
+        print("PLACA: ", dados_cliente["placa"])
         print("")
 
 

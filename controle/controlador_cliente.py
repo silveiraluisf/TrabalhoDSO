@@ -4,7 +4,7 @@ from entidade.cliente.ClientePessoaFisica import ClientePessoaFisica
 from entidade.cliente.ClientePessoaJuridica import ClientePessoaJuridica
 from persistencia.cliente_dao_pf import ClientePFDAO
 from persistencia.cliente_dao_pj import ClientePJDAO
-
+from entidade.veiculo.veiculo import Veiculo
 
 class ControladorCliente():
 
@@ -13,7 +13,7 @@ class ControladorCliente():
         self.__dao_pj = ClientePJDAO() 
         self.__tela_cliente = TelaCliente()
         self.__controlador_sistema = controlador_sistema
-    
+        
     def cadastrar_cliente(self):
 
         # Método para definir se vai cadastrar pessoa física ou jurídica
@@ -30,11 +30,13 @@ class ControladorCliente():
         # Método para fazer o cadastro de cliente pessoa física
 
         dados_cliente = self.__tela_cliente.coleta_dados_pessoa_fisica()
+        
+        dados_veiculo = self.__controlador_sistema.pegar_veiculo()
 
-        #veiculo = self.__controlador_sistema.controlador_veiculo.busca_veiculo_pela_placa(dados_cliente["veiculo"])  # Tem que implementar o busca veiculo
-
-        cliente = ClientePessoaFisica(int(dados_cliente["codigo"]), dados_cliente["nome"], dados_cliente["telefone"], dados_cliente["endereco"], dados_cliente["data_nascimento"], dados_cliente["cpf"], dados_cliente["rg"], dados_cliente["orgao_emissor"], dados_cliente["veiculo"])
-
+        cliente = ClientePessoaFisica(int(dados_cliente["codigo"]), dados_cliente["nome"], 
+        dados_cliente["telefone"], dados_cliente["endereco"], dados_cliente["data_nascimento"], 
+        dados_cliente["cpf"], dados_cliente["rg"], dados_cliente["orgao_emissor"], dados_veiculo)
+        
         self.__dao_pf.add(cliente)
 
         self.abre_tela()
@@ -45,9 +47,11 @@ class ControladorCliente():
         # Método para fazer o cadastro de cliente pessoa física
 
         dados_cliente = self.__tela_cliente.coleta_dados_pessoa_juridica()
-        # veiculo = self.__controlador_sistema.controlador_veiculo.busca_veiculo_pela_placa(dados_cliente["veiculo"])  # Tem que implementar o busca veiculo
+        
+        dados_veiculo = self.__controlador_sistema.pegar_veiculo()
 
-        cliente = ClientePessoaJuridica(dados_cliente["codigo"], dados_cliente["nome"], dados_cliente["telefone"], dados_cliente["endereco"], dados_cliente["data_fundacao"], dados_cliente["cnpj"], dados_cliente["veiculo"])
+        cliente = ClientePessoaJuridica(dados_cliente["codigo"], dados_cliente["nome"], dados_cliente["telefone"], 
+        dados_cliente["endereco"], dados_cliente["data_fundacao"], dados_cliente["cnpj"], dados_veiculo)
 
         self.__dao_pj.add(cliente)
 
@@ -117,6 +121,8 @@ class ControladorCliente():
                 self.__dao_pf.remove(cliente)
                 self.__dao_pf.add(cliente_editado)
                 break
+        else:
+                print("Cliente não encontrado")
 
     def editar_cliente_pj(self):
 
@@ -135,6 +141,9 @@ class ControladorCliente():
                 self.__dao_pj.remove(cliente)
                 self.__dao_pj.add(cliente_editado)
                 break
+        
+        else:
+                print("Cliente não encontrado")
 
     def listar_clientes(self):
 
@@ -148,14 +157,18 @@ class ControladorCliente():
     def listar_clientes_pf(self):
 
         for cliente in self.__dao_pf.get_all():
-            self.__tela_cliente.listar_clientes_pf({'codigo': cliente.codigo, "nome": cliente.nome, "telefone": cliente.telefone, "endereco": cliente.endereco, "data_nascimento": cliente.data_nascimento, "cpf": cliente.cpf, "rg": cliente.rg, "orgao_emissor": cliente.orgao_emissor, "veiculo": cliente.veiculo})
-    
+            self.__tela_cliente.listar_clientes_pf({'codigo': cliente.codigo, "nome": cliente.nome, 
+            "telefone": cliente.telefone, "endereco": cliente.endereco, "data_nascimento": cliente.data_nascimento, 
+            "cpf": cliente.cpf, "rg": cliente.rg, "orgao_emissor": cliente.orgao_emissor, 
+            "veiculo": cliente.veiculo.modelo, "placa": cliente.veiculo.placa})
         self.abre_tela()
 
     def listar_clientes_pj(self):
 
         for cliente in self.__dao_pj.get_all():
-            self.__tela_cliente.listar_clientes_pj({"codigo": cliente.codigo, "nome": cliente.nome, "telefone": cliente.telefone, "endereco": cliente.endereco, "data_fundacao": cliente.data_fundacao, "cnpj": cliente.cnpj, "veiculo": cliente.veiculo})
+            self.__tela_cliente.listar_clientes_pj({"codigo": cliente.codigo, "nome": cliente.nome, 
+            "telefone": cliente.telefone, "endereco": cliente.endereco, "data_fundacao": cliente.data_fundacao, 
+            "cnpj": cliente.cnpj, "veiculo": cliente.veiculo})
     
         self.abre_tela()
 

@@ -39,6 +39,10 @@ class ControladorSistema():
         # Chama o controlador de Veiculo
         self.__controlador_veiculo.abre_tela()
 
+    def pegar_veiculo(self):
+        veiculo = self.__controlador_veiculo.pegar_veiculo()
+        return veiculo
+
     def encerra_sistema(self):
 
         exit(0)
