@@ -30,8 +30,10 @@ class TelaCliente:
 
 
     def coleta_dados_pessoa_fisica(self):
+
         # coleta dados de cliente pessoa física
-        print("---------- Coleta de dados ---------")
+
+        print("--------- Coleta de dados ----------")
         print("------------- Cliente --------------")
         print("---------- PESSOA FÍSICA -----------")
         
@@ -61,9 +63,8 @@ class TelaCliente:
         cpf = input("CPF: ")
         rg = input("R.G.: ")
         orgao_emissor = input("Órgão Emissor: ")
-        #veiculo = input("Veículo: ")
 
-        return {"codigo":codigo, "nome": nome, "telefone": telefone, "endereco": endereco, "data_nascimento": data_nascimento, "cpf": cpf, "rg": rg, "orgao_emissor": orgao_emissor}
+        return {"codigo": codigo, "nome": nome, "telefone": telefone, "endereco": endereco, "data_nascimento": data_nascimento, "cpf": cpf, "rg": rg, "orgao_emissor": orgao_emissor}
 
 
 
@@ -71,11 +72,11 @@ class TelaCliente:
 
         # coleta dados de cliente pessoa jurídica
         
-        print("Abrir tela pra coletar dados Pessia Física")
-        print("-------- Cadastrar Cliente ---------")
+        print("--------- Coleta de dados ----------")
+        print("------------- Cliente --------------")
         print("--------- PESSOA JURÍDICA ----------")
         
-        #gera o código automaticamente (verificar como fazer isso"
+        #gera o código automaticamente (verificar como fazer isso) - DE REPENTE COM SINGLETON, com atributo na classe
 
         while True:
             try:
@@ -100,9 +101,8 @@ class TelaCliente:
         endereco = input("Endereço: ")
         data_fundacao = input("Data de Fundação: ")
         cnpj = input("CNPJ: ")
-        veiculo = input("Veículo: ")
 
-        return {"codigo":codigo, "nome": nome, "telefone": telefone, "endereco": endereco, "data_fundacao": data_fundacao, "cnpj": cnpj, "veiculo": veiculo}
+        return {"codigo":codigo, "nome": nome, "telefone": telefone, "endereco": endereco, "data_fundacao": data_fundacao, "cnpj": cnpj}
 
     def tipo_de_cliente(self):
         # escolhe se é cliente pessoa física ou jurídica
@@ -149,6 +149,7 @@ class TelaCliente:
         print("DATA FUND..: ", dados_cliente["data_fundacao"])
         print("CNPJ: ", dados_cliente["cnpj"])
         print("VEÍCULO: ", dados_cliente["veiculo"])
+        print("PLACA: ", dados_cliente["placa"])
         print("")
 
     def pesquisar_cliente_pf_pelo_nome(self):
@@ -157,7 +158,7 @@ class TelaCliente:
         print("")
         print("")
 
-        nome = input("Digite o nome a ser pesquisado: ")
+        nome = input("Digite o nome: ")
 
 
         return nome
@@ -168,7 +169,7 @@ class TelaCliente:
         print("")
         print("")
 
-        nome = input("Digite a razão social a ser pesquisada: ")
+        nome = input("Digite a razão social: ")
 
         return nome
 
@@ -184,6 +185,7 @@ class TelaCliente:
         print("R.G.: ", dados_cliente["rg"])
         print("ÓRGÃO EMISSOR: ", dados_cliente["orgao_emissor"])
         print("VEÍCULO: ", dados_cliente["veiculo"])
+        print("PLACA: ", dados_cliente["placa"])
         print("")
 
 
@@ -197,8 +199,37 @@ class TelaCliente:
         print("DATA FUND..: ", dados_cliente["data_fundacao"])
         print("CNPJ: ", dados_cliente["cnpj"])
         print("VEÍCULO: ", dados_cliente["veiculo"])
+        print("PLACA: ", dados_cliente["placa"])
         print("")
 
+    def inicio_de_lista(self):
+        print("")
+        print("")
+        print("--------------------------------")
+        print("------ INÍCIO DA LISTAGEM ------")
+        print("--------------------------------")
+        print("")
+        print("")
+
+    def fim_de_lista(self):
+        print("")
+        print("")
+        print("--------------------------------")
+        print("------- FIM DA LISTAGEM --------")
+        print("--------------------------------")
+        print("")
+
+    def sucesso(self):
+        print("")
+        print("")
+        print("------ OPERAÇÃO REALIZADA ------")
+        print("--------- COM SUCESSO !! -------")
+
+    def falha(self):
+        print("")
+        print("")
+        print("------- NÃO FOI POSSÍVEL -------")
+        print("----- CONCLUIR A OPERAÇÃO! -----")
 
     def area_em_construcao(self):
         print("================ Opa! =================")
