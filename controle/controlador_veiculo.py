@@ -73,8 +73,11 @@ class ControladorVeiculo():
 
         for veiculo in self.__dao.get_all():
             if placa == veiculo.placa:
-                self.__dao.get(veiculo)
-            return veiculo 
+                self.__dao.get(veiculo.placa)
+
+        print(">>>>>>>>>>>>>>>>", veiculo.modelo, "<<<<<<<<<<<<<<<<<<<")
+
+        return veiculo
         
         #else: 
         #    print("Veiculo não encontrado")

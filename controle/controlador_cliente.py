@@ -32,13 +32,13 @@ class ControladorCliente():
         dados_cliente = self.__tela_cliente.coleta_dados_pessoa_fisica()
         
         dados_veiculo = self.__controlador_sistema.pegar_veiculo()
-
-        veiculo = Veiculo(dados_veiculo["modelo"], dados_veiculo["placa"], dados_veiculo["ano"], dados_veiculo["quilometragem"])
-
+        print(">>>>>>>>>>>", dados_veiculo, "<<<<<<<<<<<<<<<")
+        #veiculo = Veiculo(dados_veiculo["modelo"], dados_veiculo["placa"], dados_veiculo["ano"], dados_veiculo["quilometragem"])
+        print(">>>>>>>>>>>", dados_veiculo.modelo, "<<<<<<<<<<<<<")
         cliente = ClientePessoaFisica(int(dados_cliente["codigo"]), dados_cliente["nome"], 
         dados_cliente["telefone"], dados_cliente["endereco"], dados_cliente["data_nascimento"], 
-        dados_cliente["cpf"], dados_cliente["rg"], dados_cliente["orgao_emissor"], veiculo)
-
+        dados_cliente["cpf"], dados_cliente["rg"], dados_cliente["orgao_emissor"], dados_veiculo)
+        print(">>>>>>>>>>>", cliente.nome, "<<<<<<<<<<<<<")
         self.__dao_pf.add(cliente)
 
         self.abre_tela()
