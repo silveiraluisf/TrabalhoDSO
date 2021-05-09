@@ -125,7 +125,7 @@ class TelaCliente:
                 return opcao
  
     
-    def listar_clientes_pf(self, dados_cliente, veiculo):
+    def listar_clientes_pf(self, dados_cliente):
         print("====== CÓDIGO CLIENTE: ", dados_cliente["codigo"],"======")
         print("")        
         print("NOME CLIENTE: ", dados_cliente["nome"])
@@ -135,7 +135,7 @@ class TelaCliente:
         print("CPF: ", dados_cliente["cpf"])
         print("R.G.: ", dados_cliente["rg"])
         print("ÓRGÃO EMISSOR: ", dados_cliente["orgao_emissor"])
-        print("VEÍCULO: ", veiculo)
+        print("VEÍCULO: ", dados_cliente["veiculo"])
         print("")
 
 

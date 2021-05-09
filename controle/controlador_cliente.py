@@ -32,13 +32,11 @@ class ControladorCliente():
         dados_cliente = self.__tela_cliente.coleta_dados_pessoa_fisica()
         
         dados_veiculo = self.__controlador_sistema.pegar_veiculo()
-        print(">>>>>>>>>>>", dados_veiculo, "<<<<<<<<<<<<<<<")
-        #veiculo = Veiculo(dados_veiculo["modelo"], dados_veiculo["placa"], dados_veiculo["ano"], dados_veiculo["quilometragem"])
-        print(">>>>>>>>>>>", dados_veiculo.modelo, "<<<<<<<<<<<<<")
+
         cliente = ClientePessoaFisica(int(dados_cliente["codigo"]), dados_cliente["nome"], 
         dados_cliente["telefone"], dados_cliente["endereco"], dados_cliente["data_nascimento"], 
         dados_cliente["cpf"], dados_cliente["rg"], dados_cliente["orgao_emissor"], dados_veiculo)
-        print(">>>>>>>>>>>", cliente.nome, "<<<<<<<<<<<<<")
+        
         self.__dao_pf.add(cliente)
 
         self.abre_tela()
@@ -49,9 +47,11 @@ class ControladorCliente():
         # Método para fazer o cadastro de cliente pessoa física
 
         dados_cliente = self.__tela_cliente.coleta_dados_pessoa_juridica()
-        veiculo = self.__controlador_sistema.controlador_veiculo.pesquisar_veiculo_placa(dados_cliente["veiculo"])
+        
+        dados_veiculo = self.__controlador_sistema.pegar_veiculo()
 
-        cliente = ClientePessoaJuridica(dados_cliente["codigo"], dados_cliente["nome"], dados_cliente["telefone"], dados_cliente["endereco"], dados_cliente["data_fundacao"], dados_cliente["cnpj"], veiculo)
+        cliente = ClientePessoaJuridica(dados_cliente["codigo"], dados_cliente["nome"], dados_cliente["telefone"], 
+        dados_cliente["endereco"], dados_cliente["data_fundacao"], dados_cliente["cnpj"], dados_veiculo)
 
         self.__dao_pj.add(cliente)
 
@@ -157,7 +157,10 @@ class ControladorCliente():
     def listar_clientes_pf(self):
 
         for cliente in self.__dao_pf.get_all():
-            self.__tela_cliente.listar_clientes_pf({'codigo': cliente.codigo, "nome": cliente.nome, "telefone": cliente.telefone, "endereco": cliente.endereco, "data_nascimento": cliente.data_nascimento, "cpf": cliente.cpf, "rg": cliente.rg, "orgao_emissor": cliente.orgao_emissor, "veiculo": cliente.veiculo})
+            self.__tela_cliente.listar_clientes_pf({'codigo': cliente.codigo, "nome": cliente.nome, 
+            "telefone": cliente.telefone, "endereco": cliente.endereco, "data_nascimento": cliente.data_nascimento, 
+            "cpf": cliente.cpf, "rg": cliente.rg, "orgao_emissor": cliente.orgao_emissor, 
+            "veiculo": cliente.veiculo})
             #self.__tela_veiculo.mostrar_veiculos(dados_cliente["veiculo"])
         self.abre_tela()
 
