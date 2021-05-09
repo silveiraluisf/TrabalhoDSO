@@ -160,14 +160,15 @@ class ControladorCliente():
             self.__tela_cliente.listar_clientes_pf({'codigo': cliente.codigo, "nome": cliente.nome, 
             "telefone": cliente.telefone, "endereco": cliente.endereco, "data_nascimento": cliente.data_nascimento, 
             "cpf": cliente.cpf, "rg": cliente.rg, "orgao_emissor": cliente.orgao_emissor, 
-            "veiculo": cliente.veiculo})
-            #self.__tela_veiculo.mostrar_veiculos(dados_cliente["veiculo"])
+            "veiculo": cliente.veiculo.modelo, "placa": cliente.veiculo.placa})
         self.abre_tela()
 
     def listar_clientes_pj(self):
 
         for cliente in self.__dao_pj.get_all():
-            self.__tela_cliente.listar_clientes_pj({"codigo": cliente.codigo, "nome": cliente.nome, "telefone": cliente.telefone, "endereco": cliente.endereco, "data_fundacao": cliente.data_fundacao, "cnpj": cliente.cnpj, "veiculo": cliente.veiculo})
+            self.__tela_cliente.listar_clientes_pj({"codigo": cliente.codigo, "nome": cliente.nome, 
+            "telefone": cliente.telefone, "endereco": cliente.endereco, "data_fundacao": cliente.data_fundacao, 
+            "cnpj": cliente.cnpj, "veiculo": cliente.veiculo})
     
         self.abre_tela()
 
