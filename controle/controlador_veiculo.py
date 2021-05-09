@@ -50,6 +50,8 @@ class ControladorVeiculo():
                 self.__dao.add(veiculo_editado)
                 break
 
+        self.abre_tela()
+
     def excluir_veiculo(self):
         placa = self.__tela_veiculo.pesquisar_veiculo_placa()
 
@@ -60,9 +62,11 @@ class ControladorVeiculo():
                 break 
         else: 
             print("Veiculo não encontrado")
+
+        self.abre_tela()
        
     def voltar(self):
-        self.abre_tela()
+        self.__controlador_sistema.abre_tela()
     
     def abre_tela(self):
         lista_opcoes = {1: self.cadastrar_veiculo, 2: self.listar_veiculos, 3: self.pesquisar_veiculo_placa, 
