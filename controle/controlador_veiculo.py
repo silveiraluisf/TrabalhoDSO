@@ -75,8 +75,6 @@ class ControladorVeiculo():
             if placa == veiculo.placa:
                 self.__dao.get(veiculo.placa)
 
-        print(">>>>>>>>>>>>>>>>", veiculo.modelo, "<<<<<<<<<<<<<<<<<<<")
-
         return veiculo
         
         #else: 
