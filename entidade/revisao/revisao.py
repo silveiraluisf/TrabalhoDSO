@@ -1,16 +1,18 @@
-from entidade.veiculo.veiculo import Veiculo 
-from entidade.revisao.substituicao import Substituicao
-from entidade.revisao.verificacao import Verificacao
-
 class Revisao():
-    def __init__(self, quilometragem: int, verificacao: Verificacao, substituicao: Substituicao):
-        
-        if isinstance(quilometragem, int):
-            self.__quilometragem = quilometragem
-        if isinstance(verificacao, Verificacao):
-            self.__verificacao = verificacao
-        if isinstance(substituicao, Substituicao):
-            self.__substituicao = substituicao
+    def __init__(self, codigo: int, quilometragem: int, verificacao: [], substituicao: []):
+        self.__codigo = codigo 
+        self.__quilometragem = quilometragem
+        self.__verificacao = verificacao
+        self.__substituicao = substituicao
+
+    @property
+    def codigo(self) -> int:
+        return self.__codigo
+
+    @codigo.setter
+    def codigo(self, codigo: int):
+        if isinstance(codigo, int):
+            self.__codigo = codigo
 
     @property
     def quilometragem(self) -> int:
@@ -22,38 +24,24 @@ class Revisao():
             self.__quilometragem = quilometragem
 
     @property
-    def verificacao(self) -> Verificacao:
+    def verificacao(self) -> []:
         return self.__verificacao
 
+    @verificacao.setter
+    def verificacao(self, verificacao: []):
+        if isinstance(verificacao, []):
+            self.__verificacao = verificacao
+
     @property
-    def substituicao(self) -> Substituicao:
+    def substituicao(self) -> []:
         return self.__substituicao
 
-    I = Substituicao(1, "Substituir óleo do motor")
+    @substituicao.setter
+    def substituicao(self, substituicao: []):
+        if isinstance(substituicao, []):
+            self.__substituicao = substituicao
 
-    II = Substituicao(2, "Substituir o filtro de óleo do motor")
 
-    III = Substituicao(3, "Substituir o filtro de combustível")
-
-    IV = Substituicao(4, "Substituir o anel de vedação do bujão do cárter do motor")
-
-    V = Substituicao(5, "Substituir a anilha do mecanismo do pneu de estepe")
-
-    lista_substituicoes = [I, II, III, IV, V]
-
-    VI = Verificacao(6, "Verificar as velas de ignição")
-
-    VII = Verificacao(7, "Verificar o filtro de ar do motor")
-
-    VIII = Verificacao(8, "Verificar o fluido de freio")
-
-    IX = Verificacao(9, "Verificar a correia dentada")
-
-    X = Verificacao(10, "Verificar a correia auxiliar")
-
-    XI = Verificacao(11, "Verificar o líquido de arrefecimento")
-
-    lista_verificacoes = [VI, VII, VIII, IX, X]
 
 
 
