@@ -42,11 +42,3 @@ class Revisao():
             self.__substituicao = substituicao
 
 
-
-
-
-    
-
-  
-
-    

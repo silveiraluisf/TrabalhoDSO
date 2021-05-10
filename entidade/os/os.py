@@ -8,14 +8,14 @@ class OS:
     __numero = 1
 
     def __init__(self, data: str, cliente: ClientePessoaFisica or ClientePessoaJuridica,
-                 veiculo: Veiculo):
+                 veiculo: Veiculo, revisao: Revisao):
 
         self.__numero = OS.__numero
         OS.__numero = OS.__numero + 1
         self.__data = data
         self.__cliente = cliente
         self.__veiculo = veiculo
-        #self.__revisao = revisao
+        self.__revisao = revisao
 
     @property
     def numero(self):

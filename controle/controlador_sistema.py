@@ -61,6 +61,10 @@ class ControladorSistema():
         cliente = self.__controlador_cliente.pegar_cliente_pf()
         return cliente
 
+    def incluir_revisao(self, codigo):
+        # Insere uma revisão na OS
+        return self.__controlador_revisao.incluir_revisão(codigo)
+
     def encerra_sistema(self):
 
         exit(0)
