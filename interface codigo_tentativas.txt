@@ -1,0 +1,146 @@
+import PySimpleGUI as sg 
+
+class TelaSistema:
+
+    def __init__(self):
+        self.__window = None
+        self.init_components()
+
+    def init_components(self):
+        layout = [[sg.Text('SISTEMA DE CONTROLE DE SERVIÇOS VEICULARES', justification='center', size=(20, 1))],
+                  [sg.Button('Veiculos', key='1', size=(20, 1))],
+                  [sg.Button('Revisao', key='2', size=(20, 1))],
+                  [sg.Button('Clientes', key='3', size=(20, 1))],
+                  [sg.Button('Ordem de Serviço', key='4', size=(20, 1))],
+                  [sg.Button('Sair', key='0', size=(20, 1))]]
+                  
+        self.__window = sg.Window('Sistema Veiculo').Layout(layout)
+
+    def tela_opcoes(self):
+        self.init_components()    
+        botao, valores = self.__window.Read()
+        if botao is None:
+            botao = 0
+        return int(botao)
+
+    def fechar_tela(self):
+        self.__window.close()
+___________________________________________________________________
+
+import PySimpleGUI as sg
+
+class TelaVeiculo():
+
+    def __init__(self):
+        self.__window = None
+        self.init_components()
+
+    def init_components(self):
+        layout = [[sg.Text('VEÍCULO', justification='center', size=(30, 1))],
+                  [sg.Button('Criar Veiculo', key='1', size=(30, 1))],
+                  [sg.Button('Listar Veiculo', key='2', size=(30, 1))],
+                  [sg.Button('Pesquisar Veiculo Pela Placa', key='3', size=(30, 1))],
+                  [sg.Button('Editar Veiculo', key='4', size=(30, 1))],
+                  [sg.Button('Excluir Veiculo', key='5', size=(30, 1))],
+                  [sg.Button('Voltar', key='6', size=(30, 1))]]
+                  
+        self.__window = sg.Window('Tela Veiculo').Layout(layout)
+
+    def tela_opcoes(self):
+        self.init_components()    
+        botao, valores = self.__window.Read()
+        return int(botao)
+
+    def fechar_tela(self):
+        self.__window.close()
+__________________________________________________________________
+
+import PySimpleGUI as sg
+
+class TelaRevisao():
+
+    def __init__(self):
+        self.__window = None
+        self.init_components()
+
+    def init_components(self):
+        layout = [[sg.Text('REVISAO', justification='center', size=(30, 1))],
+                  [sg.Button('Criar Revisao', key='1', size=(30, 1))],
+                  [sg.Button('Listar Revisao', key='2', size=(30, 1))],
+                  [sg.Button('Pesquisar Revisao Pela Placa', key='3', size=(30, 1))],
+                  [sg.Button('Editar Revisao', key='4', size=(30, 1))],
+                  [sg.Button('Excluir Revisao', key='5', size=(30, 1))],
+                  [sg.Button('Voltar', key='0', size=(30, 1))]]
+                  
+        self.__window = sg.Window('Tela Revisao').Layout(layout)
+
+    def tela_opcoes(self):
+        self.init_components()    
+        botao, valores = self.__window.Read()
+        if botao is None:
+            botao = 0
+        return int(botao)
+
+    def fechar_tela(self):
+        self.__window.close()
+________________________________________________________________
+
+import PySimpleGUI as sg
+
+class TelaCliente:
+
+    def __init__(self):
+        self.__window = None
+        self.init_components()
+
+    def init_components(self):
+        layout = [[sg.Text('CLIENTE', justification='center', size=(30, 1))],
+                  [sg.Button('Cadastrar Cliente', key='1', size=(30, 1))],
+                  [sg.Button('Remover Cliente', key='2', size=(30, 1))],
+                  [sg.Button('Editar Cliente', key='3', size=(30, 1))],
+                  [sg.Button('Excluir Cliente', key='4', size=(30, 1))],
+                  [sg.Button('Pesquisar Cliente Pelo Nome', key='5', size=(30, 1))],
+                  [sg.Button('Voltar', key='0', size=(30, 1))]]
+                  
+        self.__window = sg.Window('Tela Cliente').Layout(layout)
+
+    def tela_opcoes(self):
+        self.init_components()    
+        botao, valores = self.__window.Read()
+        if botao is None:
+            botao = 0
+        return int(botao)
+
+    def fechar_tela(self):
+        self.__window.close()
+
+_________________________________________________________________
+
+import PySimpleGUI as sg
+
+class TelaRevisao():
+
+    def __init__(self):
+        self.__window = None
+        self.init_components()
+
+    def init_components(self):
+        layout = [[sg.Text('REVISAO', justification='center', size=(30, 1))],
+                  [sg.Button('Criar Revisao', key='1', size=(30, 1))],
+                  [sg.Button('Listar Revisao', key='2', size=(30, 1))],
+                  [sg.Button('Pesquisar Revisao Pela Placa', key='3', size=(30, 1))],
+                  [sg.Button('Editar Revisao', key='4', size=(30, 1))],
+                  [sg.Button('Excluir Revisao', key='5', size=(30, 1))],
+                  [sg.Button('Voltar', key='0', size=(30, 1))]]
+                  
+        self.__window = sg.Window('Tela Revisao').Layout(layout)
+
+    def tela_opcoes(self):
+        self.init_components()    
+        botao, valores = self.__window.Read()
+        if botao is None:
+            botao = 0
+        return int(botao)
+
+    def fechar_tela(self):
+        self.__window.close()
