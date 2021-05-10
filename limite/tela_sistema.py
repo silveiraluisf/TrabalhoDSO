@@ -15,6 +15,7 @@ class TelaSistema:
         print("1 - Veiculos")
         print("2 - Revisao")
         print("3 - Clientes")
+        print("4 - Serviços")
         print("0 - Sair")
 
 

@@ -72,10 +72,11 @@ class ControladorVeiculo():
         placa = self.__tela_veiculo.pesquisar_veiculo_placa()
 
         for veiculo in self.__dao.get_all():
-            if placa == veiculo.placa:
+            if placa != veiculo.placa:
+                pass
+            else:
                 self.__dao.get(veiculo.placa)
-
-        return veiculo
+                return veiculo
         
         #else: 
         #    print("Veiculo não encontrado")
