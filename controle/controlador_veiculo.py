@@ -48,10 +48,11 @@ class ControladorVeiculo():
 
                 self.__dao.remove(veiculo)
                 self.__dao.add(veiculo_editado)
+                self.__tela_veiculo.sucesso()
                 break
 
         else: 
-            print("Veiculo não encontrado")
+            self.__tela_veiculo.falha()
 
         self.abre_tela()
 
@@ -61,10 +62,10 @@ class ControladorVeiculo():
         for veiculo in self.__dao.get_all():
             if placa == veiculo.placa:
                 self.__dao.remove(veiculo) 
-                print("----OK: Veículo removido! ----")
+                self.__tela_veiculo.sucesso()
                 break 
         else: 
-            print("Veiculo não encontrado")
+            self.__tela_veiculo.falha()
 
         self.abre_tela()
 

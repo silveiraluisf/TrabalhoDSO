@@ -58,3 +58,14 @@ class TelaVeiculo():
         print("QUILOMETRAGEM: ", dados_veiculo["quilometragem"], "km")
         print("")
 
+    def falha(self):
+        print("")
+        print("")
+        print("------- NÃO FOI POSSÍVEL -------")
+        print("----- CONCLUIR A OPERAÇÃO! -----")
+
+    def sucesso(self):
+        print("")
+        print("")
+        print("------ OPERAÇÃO REALIZADA ------")
+        print("--------- COM SUCESSO !! -------")
