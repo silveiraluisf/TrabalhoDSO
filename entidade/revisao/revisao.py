@@ -10,7 +10,7 @@ class Revisao():
         if isinstance(verificacao, Verificacao):
             self.__verificacao = verificacao
         if isinstance(substituicao, Substituicao):
-            self.__substituicao = verificacao
+            self.__substituicao = substituicao
 
     @property
     def quilometragem(self) -> int:
