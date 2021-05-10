@@ -21,51 +21,58 @@ class ControladorRevisao():
     def criar_item_revisao(self):
         dados_revisao = self.__tela_revisao.pega_dados_revisao()
 
-        revisao = Revisao(dados_revisao["quilometragem"], dados_revisao["verificacao"], dados_revisao["substituicao"])
+        revisao = Revisao(dados_revisao["codigo"], dados_revisao["quilometragem"], 
+        dados_revisao["verificacao"], dados_revisao["substituicao"])
 
         self.__dao.add(revisao)
-
+        self.__tela_revisao.sucesso()
         self.abre_tela()
 
     def listar_itens_revisao(self):
         for revisao in self.__dao.get_all():
-            self.__tela_revisao.listar_revisoes({'quilometragem': revisao.quilometragem,
+            self.__tela_revisao.listar_revisoes({'codigo':revisao.codigo, 'quilometragem': revisao.quilometragem,
             'verificacao': revisao.verificacao, 'substituicao': revisao.substituicao})
+
+        self.abre_tela()
 
     def excluir_item_revisao(self):
         
-        quilometragem = self.__tela_revisao.pega_dados_revisao()
+        codigo = self.__tela_revisao.pesquisar_revisao_codigo()
 
         for revisao in self.__dao.get_all():
-            if quilometragem != revisao.quilometragem:
+            if codigo != revisao.codigo:
                 pass
             else: 
                 self.__dao.remove(revisao)
+                self.__tela_revisao.sucesso()
                 self.abre_tela()
 
     def editar_item_revisao(self):
 
-        quilometragem = self.__tela_revisao.pega_dados_revisao()
+        codigo = self.__tela_revisao.pesquisar_revisao_codigo()
 
         for revisao in self.__dao.get_all():
-            if quilometragem == revisao.quilometragem:
+            if codigo == revisao.codigo:
                 nova_revisao = self.__tela_revisao.pega_dados_revisao()
 
-                revisao_editada = Revisao(nova_revisao["quilometragem"], nova_revisao["verificacao"], nova_revisao["substituicao"])
+                revisao_editada = Revisao(nova_revisao["codigo"], nova_revisao["quilometragem"], 
+                nova_revisao["verificacao"], nova_revisao["substituicao"])
 
                 self.__dao.remove(revisao)
                 self.__dao.add(revisao_editada)
+                self.__tela_revisao.sucesso()
                 break 
 
             else:
-                self.__tela_revisao.falha() 
+                self.__tela_revisao.falha()  
 
-            
+    def pesquisar_revisao_codigo(self):
 
-    #def iniciar_revisao_pf(self): 
-    #    dados_veiculo = self.__controlador_sistema.pegar_veiculo()
-    #    dados_cliente = self.__controlador_sistema.pegar_cliente_pf()
-    #    self.__tela_revisao.listar_revisoes(dados_cliente, Revisao.lista_substituicoes, Revisao.lista_verificacoes, dados_veiculo)  
+        codigo = self.__tela_revisao.pesquisar_revisao_codigo()
+
+        for revisao in self.__dao.get_all():
+            if codigo == revisao.codigo:
+                return codigo
 
     def voltar(self):
         self.__controlador_sistema.abre_tela()  

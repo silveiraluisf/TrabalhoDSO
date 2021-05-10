@@ -14,15 +14,29 @@ class TelaRevisao():
     def pega_dados_revisao(self):
         print("")
         print("------- INSIRA OS DADOS DA REVISÃO: -------")
+        codigo = input("Codigo: ")
         quilometragem = input("Quilometragem: ")
-        return {"quilometragem": quilometragem}
+        verificacao = [input("Itens de verificação: ")]
+        substituicao = [input("Itens de substituicao: ")]
+        return {"codigo": codigo, "quilometragem": quilometragem, "verificacao": verificacao, "substituicao": substituicao}
 
     def listar_revisoes(self, revisao):
         print("")
+        print("CODIGO:", revisao["codigo"])
         print("QUILOMETRAGEM:", revisao["quilometragem"])
         print("ITENS DE VERIFICACAO:", revisao["verificacao"])
         print("ITENS DE SUBSTITUICAO:", revisao["substituicao"])
         print("")
+
+    def pesquisar_revisao_codigo(self):
+        print("")
+        print("------ DIGITE O CODIGO DA REVISAO ------ ")
+        print("")
+        print("")
+
+        codigo = input("Codigo da revisão: ")
+
+        return codigo
 
     def sucesso(self):
         print("")
@@ -35,37 +49,3 @@ class TelaRevisao():
         print("")
         print("------- NÃO FOI POSSÍVEL -------")
         print("----- CONCLUIR A OPERAÇÃO! -----")
-
-
-    
-
-#    def listar_revisoes(self, dados_cliente, lista_substituicoes, lista_verificacoes, dados_veiculo):
-#        print("====== CÓDIGO CLIENTE: ", dados_cliente.codigo,"======")
-#        print("")        
-#        print("NOME CLIENTE: ", dados_cliente.nome)
-#        print("FONE CLIENTE: ", dados_cliente.telefone)
-#        print("END CLIENTE: ", dados_cliente.endereco)
-#        print("DATA NASC.: ", dados_cliente.data_nascimento)
-#        print("CPF: ", dados_cliente.cpf)
-#        print("R.G.: ", dados_cliente.rg)
-#        print("ÓRGÃO EMISSOR: ", dados_cliente.orgao_emissor)
-#        print("")
-#        print("")
-#        print("--------DADOS DO VEÍCULO---------")
-#        print("MODELO: ", dados_veiculo.modelo)
-#        print("PLACA: ", dados_veiculo.placa)
-#        print("ANO: ", dados_veiculo.ano)
-#       print("QUILOMETRAGEM: ", dados_veiculo.quilometragem, "km")
-#        print("")
-#        print("")        
-#        print("")
-#        print("------- LISTA DOS ITENS DE REVISÃO: ---------")
-
-#        for i in lista_substituicoes:
-#            print("[  ] ", i.descricao)
-        
-#        print("----------------------")
-
-#        for v in lista_verificacoes:
-#            print("[  ] ", v.descricao)
-        
