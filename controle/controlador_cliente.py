@@ -135,7 +135,7 @@ class ControladorCliente():
                 self.__dao_pf.add(cliente_editado)
                 break
         else:
-                print("Cliente não encontrado")
+                self.__tela_cliente.falha()
 
     def editar_cliente_pj(self):
 
@@ -159,7 +159,7 @@ class ControladorCliente():
                 break
         
         else:
-                print("Cliente não encontrado")
+                self.__tela_cliente.falha()
 
     def listar_clientes(self):
 
