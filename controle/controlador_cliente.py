@@ -225,6 +225,33 @@ class ControladorCliente():
         self.__tela_cliente.falha()
         self.pesquisar_cliente_pf_pelo_nome()
 
+    def retornar_cliente_pelo_nome(self):
+
+        lista_tipos_cliente = {1: self.retornar_cliente_pf_pelo_nome, 2: self.retornar_cliente_pj_pelo_nome, 0: self.voltar_tela_cliente}
+
+        return lista_tipos_cliente[self.__tela_cliente.tipo_de_cliente()]()
+
+
+    def retornar_cliente_pf_pelo_nome(self):
+
+        nome = self.__tela_cliente.pesquisar_cliente_pf_pelo_nome()
+
+        for cliente in self.__dao_pf.get_all():
+
+            if nome == cliente.nome:
+
+                return cliente
+
+
+    def retornar_cliente_pj_pelo_nome(self):
+
+        nome = self.__tela_cliente.pesquisar_cliente_pj_pelo_nome()
+
+        for cliente in self.__dao_pj.get_all():
+
+            if nome == cliente.nome:
+
+                return cliente
 
 
     def pesquisar_cliente_pj_pelo_nome(self):
