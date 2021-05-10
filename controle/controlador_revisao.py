@@ -31,7 +31,15 @@ class ControladorRevisao():
         pass
 
     def excluir_item_revisao(self):
-        pass
+        
+        quilometragem = self.__tela_revisao.pega_dados_revisao()
+
+        for revisao in self.__dao.get_all():
+            if quilometragem != revisao.quilometragem:
+                pass
+            else: 
+                self.__dao.remove(revisao)
+                self.abre_tela()
 
     def editar_item_revisao(self):
         pass 
