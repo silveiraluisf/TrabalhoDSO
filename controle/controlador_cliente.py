@@ -135,7 +135,7 @@ class ControladorCliente():
                 self.__dao_pf.add(cliente_editado)
                 break
         else:
-                print("Cliente não encontrado")
+                self.__tela_cliente.falha()
 
     def editar_cliente_pj(self):
 
@@ -159,7 +159,7 @@ class ControladorCliente():
                 break
         
         else:
-                print("Cliente não encontrado")
+                self.__tela_cliente.falha()
 
     def listar_clientes(self):
 
@@ -244,6 +244,18 @@ class ControladorCliente():
 
         self.__tela_cliente.falha()
         self.pesquisar_cliente_pj_pelo_nome()
+
+    def pegar_cliente_pf(self):
+        nome = self.__tela_cliente.pesquisar_cliente_pf_pelo_nome()
+
+        for cliente in self.__dao_pf.get_all():
+            if nome != cliente.nome:
+                pass
+
+            else:
+                self.__dao_pf.get(cliente.nome)
+        
+        return cliente 
 
     def abre_tela(self):
         lista_opcoes = {1: self.cadastrar_cliente, 2: self.remover_cliente, 3: self.editar_cliente, 4: self.listar_clientes, 5: self.pesquisar_cliente_pelo_nome, 0: self.voltar}

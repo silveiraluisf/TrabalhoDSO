@@ -3,13 +3,23 @@ from entidade.revisao.substituicao import Substituicao
 from entidade.revisao.verificacao import Verificacao
 
 class Revisao():
-    def __init__(self, verificacao: Verificacao, substituicao: Substituicao, veiculo: Veiculo):
+    def __init__(self, quilometragem: int, verificacao: Verificacao, substituicao: Substituicao):
+        
+        if isinstance(quilometragem, int):
+            self.__quilometragem = quilometragem
         if isinstance(verificacao, Verificacao):
             self.__verificacao = verificacao
         if isinstance(substituicao, Substituicao):
-            self.__substituicao = verificacao
-        if isinstance(veiculo, Veiculo):
-            self.__veiculo = veiculo
+            self.__substituicao = substituicao
+
+    @property
+    def quilometragem(self) -> int:
+        return self.__quilometragem
+
+    @quilometragem.setter
+    def quilometragem(self, quilometragem: int):
+        if isinstance(quilometragem, int):
+            self.__quilometragem = quilometragem
 
     @property
     def verificacao(self) -> Verificacao:
@@ -18,10 +28,6 @@ class Revisao():
     @property
     def substituicao(self) -> Substituicao:
         return self.__substituicao
-
-    @property
-    def veiculo(self) -> Veiculo:
-        return self.__veiculo
 
     I = Substituicao(1, "Substituir óleo do motor")
 
