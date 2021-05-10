@@ -3,7 +3,7 @@ from entidade.revisao.substituicao import Substituicao
 from entidade.revisao.verificacao import Verificacao
 
 class Revisao():
-    def __init__(self, quilometragem: int, verificacao: Verificacao, substituicao: Substituicao, veiculo: Veiculo):
+    def __init__(self, quilometragem: int, verificacao: Verificacao, substituicao: Substituicao):
         
         if isinstance(quilometragem, int):
             self.__quilometragem = quilometragem
