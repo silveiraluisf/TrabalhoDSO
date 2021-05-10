@@ -33,7 +33,7 @@ class ControladorOS():
 
         codigo_revisao = self.verifica_km(veiculo.quilometragem)
 
-        revisao = self.incluir_revisão(codigo_revisao)
+        revisao = Revisao(20,20000, [1, 2], [6, 7]) #self.incluir_revisão(codigo_revisao)
 
         os = OS(data, dados_cliente, veiculo, revisao)
 
@@ -55,7 +55,8 @@ class ControladorOS():
     def pesquisar_os(self):
         pass
 
-    def verifica_km(self, quilometragem: Veiculo.quilometragem):
+    def verifica_km(self, quilometragem: Veiculo.quilometragem) -> int:
+
         if 0 <= quilometragem <= 10000:
             return 10
         elif 10001 <= quilometragem <= 20000:

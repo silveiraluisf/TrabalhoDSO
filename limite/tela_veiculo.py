@@ -26,7 +26,7 @@ class TelaVeiculo():
         modelo = input("Modelo: ")
         placa = input("Placa: ")
         ano = input("Ano: ")
-        quilometragem = input("Quilometragem: ")
+        quilometragem = int(input("Quilometragem: "))
 
         return {"modelo": modelo, "placa": placa, "ano": ano, "quilometragem": quilometragem}
 
