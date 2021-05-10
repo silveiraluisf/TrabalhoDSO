@@ -77,11 +77,10 @@ class ControladorRevisao():
     def incluir_revisão(self, codigo):
 
         for revisao in self.__dao.get_all():
-            if codigo == revisao.codigo:
+            if revisao.codigo != codigo:
+                pass
+            else:
                 return revisao
 
     def voltar(self):
         self.__controlador_sistema.abre_tela()  
- 
-
-     

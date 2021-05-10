@@ -7,11 +7,15 @@ from entidade.revisao.revisao import Revisao
 class OS:
     __numero = 1
 
+    @classmethod
+    def atualiza(cls, delta=1):
+        cls.__numero += delta
+
     def __init__(self, data: str, cliente: ClientePessoaFisica or ClientePessoaJuridica,
                  veiculo: Veiculo, revisao: Revisao):
 
         self.__numero = OS.__numero
-        OS.__numero = OS.__numero + 1
+        OS.atualiza()
         self.__data = data
         self.__cliente = cliente
         self.__veiculo = veiculo
