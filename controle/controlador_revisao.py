@@ -21,8 +21,8 @@ class ControladorRevisao():
     def iniciar_revisao_pf(self): 
         dados_veiculo = self.__controlador_sistema.pegar_veiculo()
         dados_cliente = self.__controlador_sistema.pegar_cliente_pf()
-        self.__tela_revisao.listar_revisoes(Revisao.lista_substituicoes, Revisao.lista_verificacoes, dados_veiculo, dados_cliente) 
-        pass 
+        #revisao = Revisao(lista_substituicoes, lista_verificacoes, dados_veiculo, dados_cliente)
+        self.__tela_revisao.listar_revisoes(dados_cliente, Revisao.lista_substituicoes, Revisao.lista_verificacoes, dados_veiculo)  
 
     def voltar(self):
         self.__controlador_sistema.abre_tela()  

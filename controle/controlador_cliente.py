@@ -254,7 +254,8 @@ class ControladorCliente():
 
             else:
                 self.__dao_pf.get(cliente.nome)
-                return cliente 
+        
+        return cliente 
 
     def abre_tela(self):
         lista_opcoes = {1: self.cadastrar_cliente, 2: self.remover_cliente, 3: self.editar_cliente, 4: self.listar_clientes, 5: self.pesquisar_cliente_pelo_nome, 0: self.voltar}
