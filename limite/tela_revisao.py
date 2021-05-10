@@ -17,6 +17,25 @@ class TelaRevisao():
         quilometragem = input("Quilometragem: ")
         return {"quilometragem": quilometragem}
 
+    def listar_revisoes(self, revisao):
+        print("")
+        print("QUILOMETRAGEM:", revisao["quilometragem"])
+        print("ITENS DE VERIFICACAO:", revisao["verificacao"])
+        print("ITENS DE SUBSTITUICAO:", revisao["substituicao"])
+        print("")
+
+    def sucesso(self):
+        print("")
+        print("")
+        print("------ OPERAÇÃO REALIZADA ------")
+        print("--------- COM SUCESSO !! -------")
+
+    def falha(self):
+        print("")
+        print("")
+        print("------- NÃO FOI POSSÍVEL -------")
+        print("----- CONCLUIR A OPERAÇÃO! -----")
+
 
     
 

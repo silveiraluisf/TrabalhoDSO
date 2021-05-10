@@ -28,7 +28,9 @@ class ControladorRevisao():
         self.abre_tela()
 
     def listar_itens_revisao(self):
-        pass
+        for revisao in self.__dao.get_all():
+            self.__tela_revisao.listar_revisoes({'quilometragem': revisao.quilometragem,
+            'verificacao': revisao.verificacao, 'substituicao': revisao.substituicao})
 
     def excluir_item_revisao(self):
         
@@ -42,7 +44,23 @@ class ControladorRevisao():
                 self.abre_tela()
 
     def editar_item_revisao(self):
-        pass 
+
+        quilometragem = self.__tela_revisao.pega_dados_revisao()
+
+        for revisao in self.__dao.get_all():
+            if quilometragem == revisao.quilometragem:
+                nova_revisao = self.__tela_revisao.pega_dados_revisao()
+
+                revisao_editada = Revisao(nova_revisao["quilometragem"], nova_revisao["verificacao"], nova_revisao["substituicao"])
+
+                self.__dao.remove(revisao)
+                self.__dao.add(revisao_editada)
+                break 
+
+            else:
+                self.__tela_revisao.falha() 
+
+            
 
     #def iniciar_revisao_pf(self): 
     #    dados_veiculo = self.__controlador_sistema.pegar_veiculo()
