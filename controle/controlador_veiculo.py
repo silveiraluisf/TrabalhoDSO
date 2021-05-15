@@ -46,7 +46,7 @@ class ControladorVeiculo():
 
                 veiculo_editado = Veiculo(novo_veiculo["modelo"], novo_veiculo["placa"], novo_veiculo["ano"], novo_veiculo["quilometragem"])
 
-                self.__dao.remove(veiculo)
+                self.__dao.remove(veiculo) #se a placa fosse a mesma, poderia atualizar direto
                 self.__dao.add(veiculo_editado)
                 self.__tela_veiculo.sucesso()
                 break

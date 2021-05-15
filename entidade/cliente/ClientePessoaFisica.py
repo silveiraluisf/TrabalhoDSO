@@ -5,7 +5,7 @@ class ClientePessoaFisica(AbstractCliente):
      
     def __init__(self, codigo: int, nome: str, telefone: int, endereco: str,
                  data_nascimento: str, cpf: str, rg: str, orgao_emissor: str, veiculo: Veiculo):
-         super().__init__(codigo, nome, telefone, endereco)
+         super().__init__(codigo, nome, telefone, endereco) # veiculo aqui
          self.__data_nascimento = data_nascimento
          self.__cpf = cpf
          self.__rg = rg
