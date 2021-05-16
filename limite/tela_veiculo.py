@@ -1,24 +1,29 @@
+import PySimpleGUI as sg
+
 class TelaVeiculo():
 
-    def tela_opcoes(self):
-        print("-------- Veiculo ---------")
-        print("Escolha sua opcao")
-        print("1 - Criar veiculo")
-        print("2 - Listar veiculos")
-        print("3 - Pesquisar veiculo pela placa")
-        print("4 - Editar veiculo")
-        print("5 - Excluir veiculo")
-        print("0 - Voltar")
+    def __init__(self):
+        self.__window = None
+        self.init_components()
 
-        while True:
-            try:
-                opcao = int(input("Escolha a opcao: "))
-        
-            except ValueError:
-                print("Comando inválido. Digite um comando válido")
-            
-            else:
-                return opcao
+    def init_components(self):
+        layout = [[sg.Text('VEÍCULO', justification='center', size=(30, 1))],
+                  [sg.Button('Criar Veiculo', key='1', size=(30, 1))],
+                  [sg.Button('Listar Veiculo', key='2', size=(30, 1))],
+                  [sg.Button('Pesquisar Veiculo Pela Placa', key='3', size=(30, 1))],
+                  [sg.Button('Editar Veiculo', key='4', size=(30, 1))],
+                  [sg.Button('Excluir Veiculo', key='5', size=(30, 1))],
+                  [sg.Button('Voltar', key='6', size=(30, 1))]]
+                  
+        self.__window = sg.Window('Tela Veiculo').Layout(layout)
+
+    def tela_opcoes(self):
+        self.init_components()    
+        botao, valores = self.__window.Read()
+        return int(botao)
+
+    def fechar_tela(self):
+        self.__window.close()
 
     def pega_dados_veiculo(self):
         print("")

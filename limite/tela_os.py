@@ -1,32 +1,31 @@
-class TelaOS():
+import PySimpleGUI as sg
+
+class TelaOS:
+
+    def __init__(self):
+        self.__window = None
+        self.init_components()
+
+    def init_components(self):
+        layout = [[sg.Text('ORDEM DE SERVIÇO', justification='center', size=(30, 1))],
+                  [sg.Button('Criar ordem de serviço', key='1', size=(30, 1))],
+                  [sg.Button('Editar ordem de serviço', key='2', size=(30, 1))],
+                  [sg.Button('Listar ordens de serviço', key='3', size=(30, 1))],
+                  [sg.Button('Excluir ordem de serviço', key='4', size=(30, 1))],
+                  [sg.Button('Pesquisar ordem de serviço', key='5', size=(30, 1))],
+                  [sg.Button('Voltar', key='0', size=(30, 1))]]
+                  
+        self.__window = sg.Window('Tela Cliente').Layout(layout)
 
     def tela_opcoes(self):
-        #exibe as informações da tela de cliente
-        print("")
-        print("")
-        print("====================================")
-        print("========= ORDEM DE SERVIÇO =========")
-        print("====================================")
-        print("")
-        print("--------- Selecione a opção: -------")
-        print("")
-        print("1 - Criar Ordem de Serviço")
-        print("2 - Editar Ordem de Serviço")
-        print("3 - Listar Ordens de Serviço")
-        print("4 - Excluir Ordem de Serviço")
-        print("5 - Pesquisiar Ordem de Serviço")
-        print("0 - Voltar")
-        print("")
-        print("")
+        self.init_components()    
+        botao, valores = self.__window.Read()
+        if botao is None:
+            botao = 0
+        return int(botao)
 
-        while True:
-            try:
-                opcao = int(input("Escolha a opção: "))
-
-            except ValueError:
-                print("Conteúdo Inválido. Digite o conteúdo correto.")
-            else:
-                return opcao
+    def fechar_tela(self):
+        self.__window.close()
 
     def coleta_data(self):
 
