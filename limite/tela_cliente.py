@@ -1,32 +1,31 @@
+import PySimpleGUI as sg
+
 class TelaCliente:
 
+    def __init__(self):
+        self.__window = None
+        self.init_components()
+
+    def init_components(self):
+        layout = [[sg.Text('CLIENTE', justification='center', size=(30, 1))],
+                  [sg.Button('Cadastrar Cliente', key='1', size=(30, 1))],
+                  [sg.Button('Remover Cliente', key='2', size=(30, 1))],
+                  [sg.Button('Editar Cliente', key='3', size=(30, 1))],
+                  [sg.Button('Excluir Cliente', key='4', size=(30, 1))],
+                  [sg.Button('Pesquisar Cliente Pelo Nome', key='5', size=(30, 1))],
+                  [sg.Button('Voltar', key='0', size=(30, 1))]]
+                  
+        self.__window = sg.Window('Tela Cliente').Layout(layout)
+
     def tela_opcoes(self):
-        #exibe as informações da tela de cliente
-        print("")
-        print("")
-        print("====================================")
-        print("============== CLIENTE =============")
-        print("====================================")
-        print("")
-        print("------- Selecione o assunto: -------")
-        print("")
-        print("1 - Cadastrar Cliente")
-        print("2 - Remover Cliente")
-        print("3 - Editar Cliente")
-        print("4 - Listar Clientes")
-        print("5 - Pesquisar Cliente pelo Nome")
-        print("0 - Voltar")
-        print("")
-        print("")
+        self.init_components()    
+        botao, valores = self.__window.Read()
+        if botao is None:
+            botao = 0
+        return int(botao)
 
-        while True:
-            try:
-                opcao = int(input("Escolha a opção: "))
-
-            except ValueError:
-                print("Conteúdo Inválido. Digite o conteúdo correto.")
-            else:
-                return opcao
+    def fechar_tela(self):
+        self.__window.close()
 
 
     def coleta_dados_pessoa_fisica(self):

@@ -1,15 +1,31 @@
+import PySimpleGUI as sg
+
 class TelaRevisao():
 
+    def __init__(self):
+        self.__window = None
+        self.init_components()
+
+    def init_components(self):
+        layout = [[sg.Text('REVISAO', justification='center', size=(30, 1))],
+                  [sg.Button('Criar Revisao', key='1', size=(30, 1))],
+                  [sg.Button('Listar Revisao', key='2', size=(30, 1))],
+                  [sg.Button('Pesquisar Revisao Pela Placa', key='3', size=(30, 1))],
+                  [sg.Button('Editar Revisao', key='4', size=(30, 1))],
+                  [sg.Button('Excluir Revisao', key='5', size=(30, 1))],
+                  [sg.Button('Voltar', key='0', size=(30, 1))]]
+                  
+        self.__window = sg.Window('Tela Revisao').Layout(layout)
+
     def tela_opcoes(self):
-        print("-------- Revisao ---------")
-        print("Escolha sua opcao")
-        print("1 - Criar item de revisao")
-        print("2 - Listar itens de revisao")
-        print("3 - Excluir item de revisao")
-        print("4 - Editar item de revisao")
-        print("0 - Voltar")
-        opcao = int(input("Escolha a opcao: "))
-        return opcao
+        self.init_components()    
+        botao, valores = self.__window.Read()
+        if botao is None:
+            botao = 0
+        return int(botao)
+
+    def fechar_tela(self):
+        self.__window.close()
 
     def pega_dados_revisao(self):
         print("")
