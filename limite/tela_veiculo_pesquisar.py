@@ -17,4 +17,5 @@ class TelaPesquisarVeiculo():
     def pesquisar_veiculo_placa(self):
         self.init_components()
         button, values = self.__window.Read()
+        self.__window.Close()
         return values['placa']
