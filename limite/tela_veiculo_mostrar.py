@@ -8,7 +8,7 @@ class TelaMostrarVeiculo():
     def init_components(self, veiculos):
             layout = [[sg.Text('Dados do veículo')],
                       [sg.Listbox(values= veiculos, size=(60,10))],
-                      [sg.Submit(), sg.Cancel()]]
+                      [sg.Submit()]]
 
             self.__window = sg.Window('Lista dos veiculos').Layout(layout)
 
