@@ -21,6 +21,7 @@ class TelaSistema:
         botao, valores = self.__window.Read()
         if botao is None:
             botao = 0
+        self.fechar_tela()
         return int(botao)
 
     def fechar_tela(self):
