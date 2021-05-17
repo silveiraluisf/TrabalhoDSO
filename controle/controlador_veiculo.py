@@ -1,4 +1,8 @@
 from limite.tela_veiculo import TelaVeiculo
+from limite.tela_veiculo_cadastro import TelaCadastroVeiculo
+from limite.tela_veiculo_mostrar import TelaMostrarVeiculo
+from limite.tela_veiculo_pesquisar import TelaPesquisarVeiculo
+from limite.tela_veiculo_resultado import TelaVeiculoResultado
 from entidade.veiculo.veiculo import Veiculo
 from persistencia.veiculo_dao import VeiculoDAO 
 
@@ -8,9 +12,13 @@ class ControladorVeiculo():
         self.__controlador_sistema = controlador_sistema
         self.__dao = VeiculoDAO() 
         self.__tela_veiculo = TelaVeiculo()
+        self.__tela_veiculo_cadastro = TelaCadastroVeiculo()
+        self.__tela_veiculo_mostrar = TelaMostrarVeiculo()
+        self.__tela_veiculo_pesquisar = TelaPesquisarVeiculo()
+        self.__tela_veiculo_resultado = TelaVeiculoResultado
 
     def cadastrar_veiculo(self):
-        dados_veiculo = self.__tela_veiculo.pega_dados_veiculo()
+        dados_veiculo = self.__tela_veiculo_cadastro.pega_dados_veiculo()
 
         veiculo = Veiculo(dados_veiculo["modelo"], dados_veiculo["placa"], dados_veiculo["ano"], 
         dados_veiculo["quilometragem"])
@@ -20,29 +28,37 @@ class ControladorVeiculo():
         self.abre_tela()
 
     def listar_veiculos(self):
+        veiculos = list() 
         for veiculo in self.__dao.get_all():
-            self.__tela_veiculo.mostrar_veiculos({"modelo": veiculo.modelo, 
-            "placa": veiculo.placa, "ano": veiculo.ano, "quilometragem": veiculo.quilometragem })
+            veiculos.append(
+                str('Modelo:') + str(veiculo.modelo) + ' | ' +
+                str('Placa:') + str(veiculo.placa) + ' | ' +
+                str('Ano:') + str(veiculo.ano) + ' | ' +
+                str('Quilometragem:') + str(veiculo.quilometragem)
+                ) 
+            
+        self.__tela_veiculo_mostrar.mostrar_veiculos(veiculos)
+            
 
         self.abre_tela()
 
     def pesquisar_veiculo_placa(self):
         #metodo que permite encontrar um veiculo especifico pela placa
-        placa = self.__tela_veiculo.pesquisar_veiculo_placa()
+        placa = self.__tela_veiculo_pesquisar.pesquisar_veiculo_placa()
         
         for veiculo in self.__dao.get_all():
             if placa == veiculo.placa:
-                self.__tela_veiculo.resultado_veiculo_placa({"modelo": veiculo.modelo, "placa": veiculo.placa, "ano": veiculo.ano, "quilometragem": veiculo.quilometragem})
+                self.__tela_veiculo_resultado.resultado_veiculo_placa({"modelo": veiculo.modelo, "placa": veiculo.placa, "ano": veiculo.ano, "quilometragem": veiculo.quilometragem})
 
         return veiculo 
 
     def editar_veiculo(self):
 
-        placa = self.__tela_veiculo.pesquisar_veiculo_placa()
+        placa = self.__tela_veiculo_pesquisar.pesquisar_veiculo_placa()
 
         for veiculo in self.__dao.get_all():
             if placa == veiculo.placa:
-                novo_veiculo = self.__tela_veiculo.pega_dados_veiculo()
+                novo_veiculo = self.__tela_veiculo_cadastro.pega_dados_veiculo()
 
                 veiculo_editado = Veiculo(novo_veiculo["modelo"], novo_veiculo["placa"], novo_veiculo["ano"], novo_veiculo["quilometragem"])
 
@@ -57,7 +73,7 @@ class ControladorVeiculo():
         self.abre_tela()
 
     def excluir_veiculo(self):
-        placa = self.__tela_veiculo.pesquisar_veiculo_placa()
+        placa = self.__tela_veiculo_pesquisar.pesquisar_veiculo_placa()
 
         for veiculo in self.__dao.get_all():
             if placa == veiculo.placa:
@@ -70,7 +86,7 @@ class ControladorVeiculo():
         self.abre_tela()
 
     def pegar_veiculo(self):
-        placa = self.__tela_veiculo.pesquisar_veiculo_placa()
+        placa = self.__tela_veiculo_pesquisar.pesquisar_veiculo_placa()
 
         for veiculo in self.__dao.get_all():
             if placa != veiculo.placa:
