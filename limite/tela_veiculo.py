@@ -13,13 +13,15 @@ class TelaVeiculo():
                   [sg.Button('Pesquisar Veiculo Pela Placa', key='3', size=(30, 1))],
                   [sg.Button('Editar Veiculo', key='4', size=(30, 1))],
                   [sg.Button('Excluir Veiculo', key='5', size=(30, 1))],
-                  [sg.Button('Voltar', key='6', size=(30, 1))]]
+                  [sg.Button('Voltar', key='0', size=(30, 1))]]
                   
         self.__window = sg.Window('Tela Veiculo').Layout(layout)
 
     def tela_opcoes(self):
         self.init_components_tela_opcoes()    
         botao, valores = self.__window.Read()
+        if botao is None:
+            botao = 0
         self.fechar_tela()
         return int(botao)
 

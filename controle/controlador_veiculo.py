@@ -28,9 +28,16 @@ class ControladorVeiculo():
         self.abre_tela()
 
     def listar_veiculos(self):
+        veiculos = list() 
         for veiculo in self.__dao.get_all():
-            self.__tela_veiculo_mostrar.mostrar_veiculos({"modelo": veiculo.modelo, 
-            "placa": veiculo.placa, "ano": veiculo.ano, "quilometragem": veiculo.quilometragem })
+            veiculos.append(
+                str('Modelo:') + str(veiculo.modelo) + ' | ' +
+                str('Placa:') + str(veiculo.placa) + ' | ' +
+                str('Ano:') + str(veiculo.ano) + ' | ' +
+                str('Quilometragem:') + str(veiculo.quilometragem))
+            
+        self.__tela_veiculo_mostrar.mostrar_veiculos(veiculos)
+            
 
         self.abre_tela()
 
@@ -95,7 +102,7 @@ class ControladorVeiculo():
     
     def abre_tela(self):
         lista_opcoes = {1: self.cadastrar_veiculo, 2: self.listar_veiculos, 3: self.pesquisar_veiculo_placa, 
-        4: self.editar_veiculo, 5: self.excluir_veiculo, 6: self.voltar}
+        4: self.editar_veiculo, 5: self.excluir_veiculo, 0: self.voltar}
 
         continua_tela_cliente = True
 
