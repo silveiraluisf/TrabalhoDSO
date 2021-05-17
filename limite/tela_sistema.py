@@ -24,5 +24,5 @@ class TelaSistema:
         return int(botao)
 
     def fechar_tela(self):
-        self.__window.close()
+        self.__window.Close()
 

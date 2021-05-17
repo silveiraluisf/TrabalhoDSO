@@ -4,9 +4,10 @@ class TelaVeiculo():
 
     def __init__(self):
         self.__window = None
-        self.init_components()
+        self.init_components_tela_opcoes()
+        self.init_components_pega_dados_veiculo()
 
-    def init_components(self):
+    def init_components_tela_opcoes(self):
         layout = [[sg.Text('VEÍCULO', justification='center', size=(30, 1))],
                   [sg.Button('Criar Veiculo', key='1', size=(30, 1))],
                   [sg.Button('Listar Veiculo', key='2', size=(30, 1))],
@@ -18,22 +19,28 @@ class TelaVeiculo():
         self.__window = sg.Window('Tela Veiculo').Layout(layout)
 
     def tela_opcoes(self):
-        self.init_components()    
+        self.init_components_tela_opcoes()    
         botao, valores = self.__window.Read()
         return int(botao)
 
     def fechar_tela(self):
         self.__window.close()
 
-    def pega_dados_veiculo(self):
-        print("")
-        print("------- INSIRA OS DADOS DO VEÍCULO: -------")
-        modelo = input("Modelo: ")
-        placa = input("Placa: ")
-        ano = input("Ano: ")
-        quilometragem = int(input("Quilometragem: "))
+    def init_components_pega_dados_veiculo(self):
+        layout = [[sg.Text('Insira os dados do veículo')],
+        [sg.Text('Modelo', size=(15, 1)), sg.InputText(key='modelo')],
+        [sg.Text('Placa', size=(15, 1)), sg.InputText(key='placa')],
+        [sg.Text('Ano', size=(15, 1)), sg.InputText(key='ano')],
+        [sg.Text('Quilometragem', size=(15, 1)), sg.InputText(key='quilometragem')],
+        [sg.Submit(), sg.Cancel()]]
+        
+        self.__window = sg.Window('Dados do veículo').Layout(layout)
 
-        return {"modelo": modelo, "placa": placa, "ano": ano, "quilometragem": quilometragem}
+
+    def pega_dados_veiculo(self):
+        self.init_components_pega_dados_veiculo()
+        button, values = self.__window.Read()
+        return {"modelo": values['modelo'], "placa": values['placa'], "ano": values['ano'], "quilometragem": values['quilometragem']}
 
     def mostrar_veiculos(self, dados_veiculo):
         print("")

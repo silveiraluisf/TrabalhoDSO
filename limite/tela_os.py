@@ -25,7 +25,7 @@ class TelaOS:
         return int(botao)
 
     def fechar_tela(self):
-        self.__window.close()
+        self.__window.Close()
 
     def coleta_data(self):
 

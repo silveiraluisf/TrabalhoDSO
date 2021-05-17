@@ -87,7 +87,7 @@ class ControladorVeiculo():
     
     def abre_tela(self):
         lista_opcoes = {1: self.cadastrar_veiculo, 2: self.listar_veiculos, 3: self.pesquisar_veiculo_placa, 
-        4: self.editar_veiculo, 5: self.excluir_veiculo, 0: self.voltar}
+        4: self.editar_veiculo, 5: self.excluir_veiculo, 6: self.voltar}
 
         continua_tela_cliente = True
 

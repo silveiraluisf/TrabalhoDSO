@@ -25,7 +25,7 @@ class TelaRevisao():
         return int(botao)
 
     def fechar_tela(self):
-        self.__window.close()
+        self.__window.Close()
 
     def pega_dados_revisao(self):
         print("")
