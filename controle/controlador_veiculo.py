@@ -34,7 +34,8 @@ class ControladorVeiculo():
                 str('Modelo:') + str(veiculo.modelo) + ' | ' +
                 str('Placa:') + str(veiculo.placa) + ' | ' +
                 str('Ano:') + str(veiculo.ano) + ' | ' +
-                str('Quilometragem:') + str(veiculo.quilometragem))
+                str('Quilometragem:') + str(veiculo.quilometragem)
+                ) 
             
         self.__tela_veiculo_mostrar.mostrar_veiculos(veiculos)
             

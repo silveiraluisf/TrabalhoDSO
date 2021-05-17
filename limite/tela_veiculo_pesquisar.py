@@ -1,4 +1,5 @@
 import PySimpleGUI as sg
+from PySimpleGUI.PySimpleGUI import InputText
 
 class TelaPesquisarVeiculo():
 
@@ -7,8 +8,8 @@ class TelaPesquisarVeiculo():
 
     def init_components(self):
         layout = [[sg.Text('Digite a placa do veículo')],
-                  [sg.Text('Placa', size=(15, 1)), sg.InputText()],
-                  [sg.Submit(), sg.Cancel()]]
+                  [sg.Text('Placa', size=(15, 1)), sg.InputText(key='placa')],
+                  [sg.Submit()]]
 
         self.__window = sg.Window('Pesquisar veículo').Layout(layout)
 
@@ -16,4 +17,4 @@ class TelaPesquisarVeiculo():
     def pesquisar_veiculo_placa(self):
         self.init_components()
         button, values = self.__window.Read()
-        return str(values)
+        return values['placa']
