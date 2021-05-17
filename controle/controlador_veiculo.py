@@ -1,4 +1,5 @@
 from limite.tela_veiculo import TelaVeiculo
+from limite.tela_veiculo_cadastro import TelaCadastroVeiculo
 from entidade.veiculo.veiculo import Veiculo
 from persistencia.veiculo_dao import VeiculoDAO 
 
@@ -8,9 +9,10 @@ class ControladorVeiculo():
         self.__controlador_sistema = controlador_sistema
         self.__dao = VeiculoDAO() 
         self.__tela_veiculo = TelaVeiculo()
+        self.__tela_veiculo_cadastro = TelaCadastroVeiculo()
 
     def cadastrar_veiculo(self):
-        dados_veiculo = self.__tela_veiculo.pega_dados_veiculo()
+        dados_veiculo = self.__tela_veiculo_cadastro.pega_dados_veiculo()
 
         veiculo = Veiculo(dados_veiculo["modelo"], dados_veiculo["placa"], dados_veiculo["ano"], 
         dados_veiculo["quilometragem"])

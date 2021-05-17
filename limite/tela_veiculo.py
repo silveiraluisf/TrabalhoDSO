@@ -5,7 +5,6 @@ class TelaVeiculo():
     def __init__(self):
         self.__window = None
         self.init_components_tela_opcoes()
-        self.init_components_pega_dados_veiculo()
 
     def init_components_tela_opcoes(self):
         layout = [[sg.Text('VEÍCULO', justification='center', size=(30, 1))],
@@ -24,15 +23,15 @@ class TelaVeiculo():
         return int(botao)
 
     def fechar_tela(self):
-        self.__window.close()
+        self.__window.Close()
 
     def init_components_pega_dados_veiculo(self):
         layout = [[sg.Text('Insira os dados do veículo')],
-        [sg.Text('Modelo', size=(15, 1)), sg.InputText(key='modelo')],
-        [sg.Text('Placa', size=(15, 1)), sg.InputText(key='placa')],
-        [sg.Text('Ano', size=(15, 1)), sg.InputText(key='ano')],
-        [sg.Text('Quilometragem', size=(15, 1)), sg.InputText(key='quilometragem')],
-        [sg.Submit(), sg.Cancel()]]
+                  [sg.Text('Modelo', size=(15, 1)), sg.InputText(key='modelo')],
+                  [sg.Text('Placa', size=(15, 1)), sg.InputText(key='placa')],
+                  [sg.Text('Ano', size=(15, 1)), sg.InputText(key='ano')],
+                  [sg.Text('Quilometragem', size=(15, 1)), sg.InputText(key='quilometragem')],
+                  [sg.Submit(), sg.Cancel()]]
         
         self.__window = sg.Window('Dados do veículo').Layout(layout)
 
@@ -42,24 +41,33 @@ class TelaVeiculo():
         button, values = self.__window.Read()
         return {"modelo": values['modelo'], "placa": values['placa'], "ano": values['ano'], "quilometragem": values['quilometragem']}
 
-    def mostrar_veiculos(self, dados_veiculo):
-        print("")
-        print("--------DADOS DO VEÍCULO---------")
-        print("MODELO: ", dados_veiculo["modelo"])
-        print("PLACA: ", dados_veiculo["placa"])
-        print("ANO: ", dados_veiculo["ano"])
-        print("QUILOMETRAGEM: ", dados_veiculo["quilometragem"], "km")
-        print("")
+    def init_components_mostrar_veiculos(self, veiculo):
+        layout = [[sg.Text('Dados do veículo')],
+                  [sg.Listbox(values= {"modelo": veiculo.modelo, 
+            "placa": veiculo.placa, "ano": veiculo.ano, "quilometragem": veiculo.quilometragem }, size=(60,10))],
+                  [sg.Submit(), sg.Cancel()]]
+
+        self.__window = sg.Window('Lista dos veiculos').Layout(layout)
+
+    
+    def mostrar_veiculos(self, veiculo):
+        self.init_components_mostrar_veiculos(veiculo)
+        button, values = self.__window.Read()
+        self.__window.Close() 
+        return button, values
+
+    def init_components_pesquisar_veiculo_placa(self):
+        layout = [[sg.Text('Digite a placa do veículo')],
+                  [sg.Text('Placa', size=(15, 1)), sg.InputText()],
+                  [sg.Submit(), sg.Cancel()]]
+
+        self.__window = sg.Window('Pesquisar veículo').Layout(layout)
+
 
     def pesquisar_veiculo_placa(self):
-        print("")
-        print("------ DIGITE A PLACA DO VEÍCULO: -------")
-        print("")
-        print("")
-
-        placa = input("Placa do veículo: ")
-        
-        return placa
+        self.init_components_pesquisar_veiculo_placa()
+        button, values = self.__window.Read()
+        return str(values)
 
     def resultado_veiculo_placa(self, dados_veiculo):
         print("====== RESULTADO DA PESQUISA: ======")
