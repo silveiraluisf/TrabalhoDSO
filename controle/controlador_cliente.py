@@ -93,11 +93,11 @@ class ControladorCliente():
             else:
                 self.__dao_pf.remove(cliente)
 
-                self.__tela_cliente.sucesso()
+                #self.__tela_cliente.sucesso()
 
                 self.abre_tela()
 
-        self.__tela_cliente.falha()
+        #self.__tela_cliente.falha()
         self.remover_cliente_pf_pelo_nome()
 
     def remover_cliente_pj_pelo_nome(self):
@@ -128,13 +128,13 @@ class ControladorCliente():
 
     def editar_cliente_pf(self):
 
-        nome = self.__tela_cliente.pesquisar_cliente_pf_pelo_nome()
+        nome = self.__tela_cliente_pesquisar_pf.pesquisar_nome_pf()
 
         for cliente in self.__dao_pf.get_all():
 
             if nome == cliente.nome:
 
-                novas_infos_cliente = self.__tela_cliente.coleta_dados_pessoa_fisica()
+                novas_infos_cliente = self.__tela_cliente_cadastro_pf
 
                 novo_veiculo = self.__controlador_sistema.pegar_veiculo()
 
@@ -150,7 +150,8 @@ class ControladorCliente():
                 self.__dao_pf.add(cliente_editado)
                 break
         else:
-                self.__tela_cliente.falha()
+                pass
+                #self.__tela_cliente.falha()
 
     def editar_cliente_pj(self):
 
