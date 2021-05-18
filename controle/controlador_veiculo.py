@@ -3,6 +3,8 @@ from limite.tela_veiculo_cadastro import TelaCadastroVeiculo
 from limite.tela_veiculo_mostrar import TelaMostrarVeiculo
 from limite.tela_veiculo_pesquisar import TelaPesquisarVeiculo
 from limite.tela_veiculo_resultado import TelaVeiculoResultado
+from limite.tela_pop_up_fracasso import PopUpFracasso
+from limite.tela_pop_up_sucesso import PopUpSucesso 
 from entidade.veiculo.veiculo import Veiculo
 from persistencia.veiculo_dao import VeiculoDAO 
 
@@ -15,7 +17,9 @@ class ControladorVeiculo():
         self.__tela_veiculo_cadastro = TelaCadastroVeiculo()
         self.__tela_veiculo_mostrar = TelaMostrarVeiculo()
         self.__tela_veiculo_pesquisar = TelaPesquisarVeiculo()
-        self.__tela_veiculo_resultado = TelaVeiculoResultado
+        self.__tela_veiculo_resultado = TelaVeiculoResultado()
+        self.__tela_pop_up_sucesso = PopUpSucesso()
+        self.__tela_pop_up_fracasso = PopUpFracasso()
 
     def cadastrar_veiculo(self):
         dados_veiculo = self.__tela_veiculo_cadastro.pega_dados_veiculo()
@@ -64,11 +68,11 @@ class ControladorVeiculo():
 
                 self.__dao.remove(veiculo)
                 self.__dao.add(veiculo_editado)
-                self.__tela_veiculo.sucesso()
+                self.__tela_pop_up_sucesso.sucesso()
                 break
 
         else: 
-            self.__tela_veiculo.falha()
+            self.__tela_pop_up_fracasso.falha()
 
         self.abre_tela()
 
@@ -78,10 +82,10 @@ class ControladorVeiculo():
         for veiculo in self.__dao.get_all():
             if placa == veiculo.placa:
                 self.__dao.remove(veiculo) 
-                self.__tela_veiculo.sucesso()
+                self.__tela_pop_up_sucesso.sucesso()
                 break 
         else: 
-            self.__tela_veiculo.falha()
+            self.__tela_pop_up_fracasso.falha()
 
         self.abre_tela()
 
