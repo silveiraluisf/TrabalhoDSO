@@ -1,4 +1,8 @@
 from limite.tela_cliente import TelaCliente
+from limite.tela_cliente_cadastro_pj import TelaCadastroPJ
+from limite.tela_cliente_selecao import TelaSelecaoCliente
+from limite.tela_cliente_listar import TelaLisatrClientes
+from limite.tela_cliente_cadastro_pf import TelaCadastroPF
 from entidade.cliente.abstractCliente import AbstractCliente
 from entidade.cliente.ClientePessoaFisica import ClientePessoaFisica
 from entidade.cliente.ClientePessoaJuridica import ClientePessoaJuridica
@@ -12,6 +16,10 @@ class ControladorCliente():
         self.__dao_pf = ClientePFDAO()
         self.__dao_pj = ClientePJDAO() 
         self.__tela_cliente = TelaCliente()
+        self.__tela_cliente_selecao = TelaSelecaoCliente()
+        self.__tela_cliente_cadastro_pf = TelaCadastroPF()
+        self.__tela_cliente_cadastro_pj = TelaCadastroPJ()
+        self.__tela_cliente_listar = TelaLisatrClientes()
         self.__controlador_sistema = controlador_sistema
         
     def cadastrar_cliente(self):
@@ -23,13 +31,14 @@ class ControladorCliente():
         continua_tela_cliente = True
 
         while continua_tela_cliente:
-            lista_tipos_cliente[self.__tela_cliente.tipo_de_cliente()]()
+
+            lista_tipos_cliente[self.__tela_cliente_selecao.tela_selecao_cliente()]()
     
     def cadastra_pessoa_fisica(self):
 
         # Método para fazer o cadastro de cliente pessoa física
 
-        dados_cliente = self.__tela_cliente.coleta_dados_pessoa_fisica()
+        dados_cliente = self.__tela_cliente_cadastro_pf.coleta_dados_cliente()
         
         dados_veiculo = self.__controlador_sistema.pegar_veiculo()
 
@@ -39,8 +48,6 @@ class ControladorCliente():
         
         self.__dao_pf.add(cliente)
 
-        self.__tela_cliente.sucesso()
-
         self.abre_tela()
 
 
@@ -48,11 +55,12 @@ class ControladorCliente():
 
         # Método para fazer o cadastro de cliente pessoa física
 
-        dados_cliente = self.__tela_cliente.coleta_dados_pessoa_juridica()
+        dados_cliente = self.__tela_cliente_cadastro_pj.coleta_dados_cliente()
         
         dados_veiculo = self.__controlador_sistema.pegar_veiculo()
 
-        cliente = ClientePessoaJuridica(dados_cliente["codigo"], dados_cliente["nome"], dados_cliente["telefone"], 
+
+        cliente = ClientePessoaJuridica(dados_cliente["codigo"], dados_cliente["nome"], dados_cliente["telefone"],
         dados_cliente["endereco"], dados_cliente["data_fundacao"], dados_cliente["cnpj"], dados_veiculo)
 
         self.__dao_pj.add(cliente)
@@ -67,7 +75,7 @@ class ControladorCliente():
         continua_tela_cliente = True
 
         while continua_tela_cliente:
-            escolher_tipo_cliente[self.__tela_cliente.tipo_de_cliente()]()
+            escolher_tipo_cliente[self.__tela_cliente_selecao.tela_selecao_cliente()]()
 
     def remover_cliente_pf_pelo_nome(self):
 
@@ -109,7 +117,8 @@ class ControladorCliente():
         continua_tela_cliente = True
 
         while continua_tela_cliente:
-            escolher_tipo_cliente[self.__tela_cliente.tipo_de_cliente()]()
+            escolher_tipo_cliente[self.__tela_cliente_selecao.tela_selecao_cliente()]()
+            self.__tela_cliente_selecao
 
     def editar_cliente_pf(self):
 
@@ -168,21 +177,41 @@ class ControladorCliente():
         continua_tela_cliente = True
 
         while continua_tela_cliente:
-            lista_tipos_cliente[self.__tela_cliente.tipo_de_cliente()]()
- 
+            lista_tipos_cliente[self.__tela_cliente_selecao.tela_selecao_cliente()]()
+
+
+
     def listar_clientes_pf(self):
 
-        self.__tela_cliente.inicio_de_lista()
+        lista_clientes = list()
 
         for cliente in self.__dao_pf.get_all():
-            self.__tela_cliente.listar_clientes_pf({'codigo': cliente.codigo, "nome": cliente.nome, 
-            "telefone": cliente.telefone, "endereco": cliente.endereco, "data_nascimento": cliente.data_nascimento, 
-            "cpf": cliente.cpf, "rg": cliente.rg, "orgao_emissor": cliente.orgao_emissor, 
-            "veiculo": cliente.veiculo.modelo, "placa": cliente.veiculo.placa})
 
-        self.__tela_cliente.fim_de_lista()
+            lista_clientes.append(
+                str('Código:') + str(cliente.codigo) + ' | ' +
+                str('Nome:') + str(cliente.nome) + ' | ' +
+                #str('Telefone:') + str(cliente.telefone) + ' | ' +
+                str('Endereço:') + str(cliente.endereco) + ' | ' +
+                str('Data de Nascimento:') + str(cliente.data_nascimento) + ' | ' +
+                str('CPF:') + str(cliente.cpf) + ' | ' +
+                str('R.G.:') + str(cliente.rg) + ' | ' +
+                str('Veículo:') + str(cliente.veiculo.modelo) + ' | ' +
+                str('Placa:') + str(cliente.veiculo.placa)
+            )
 
-        self.abre_tela()
+        self.__tela_cliente_listar.lista_clientes(lista_clientes)
+
+        # self.__tela_cliente.inicio_de_lista()
+        #
+        # for cliente in self.__dao_pf.get_all():
+        #     self.__tela_cliente.listar_clientes_pf({'codigo': cliente.codigo, "nome": cliente.nome,
+        #     "telefone": cliente.telefone, "endereco": cliente.endereco, "data_nascimento": cliente.data_nascimento,
+        #     "cpf": cliente.cpf, "rg": cliente.rg, "orgao_emissor": cliente.orgao_emissor,
+        #     "veiculo": cliente.veiculo.modelo, "placa": cliente.veiculo.placa})
+        #
+        # self.__tela_cliente.fim_de_lista()
+        #
+        # self.abre_tela()
 
     def listar_clientes_pj(self):
 
@@ -204,7 +233,7 @@ class ControladorCliente():
         continua_tela_cliente = True
 
         while continua_tela_cliente:
-            lista_tipos_cliente[self.__tela_cliente.tipo_de_cliente()]()
+            lista_tipos_cliente[self.__tela_cliente_selecao.tela_selecao_cliente()]()
 
     def pesquisar_cliente_pf_pelo_nome(self):
 
@@ -229,7 +258,7 @@ class ControladorCliente():
 
         lista_tipos_cliente = {1: self.retornar_cliente_pf_pelo_nome, 2: self.retornar_cliente_pj_pelo_nome, 0: self.voltar_tela_cliente}
 
-        return lista_tipos_cliente[self.__tela_cliente.tipo_de_cliente()]()
+        return lista_tipos_cliente[self.__tela_cliente_selecao.tela_selecao_cliente()]()
 
 
     def retornar_cliente_pf_pelo_nome(self):

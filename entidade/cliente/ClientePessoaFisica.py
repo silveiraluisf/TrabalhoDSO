@@ -18,7 +18,7 @@ class ClientePessoaFisica(AbstractCliente):
 
     @data_nascimento.setter
     def data_nascimento(self, data_nascimento: str):
-        if isinstance (data_nascimento, str):
+        if isinstance(data_nascimento, str):
             self.__data_nascimento = data_nascimento
             
     @property
@@ -49,11 +49,11 @@ class ClientePessoaFisica(AbstractCliente):
             self.__orgao_emissor = orgao_emissor
 
     @property
-    def veiculo(self): #confirmar se é isto mesmo
+    def veiculo(self):
         return self.__veiculo
  
     @veiculo.setter
-    def veiculo(self, veiculo: Veiculo): #confirmar se é isso mesmo
+    def veiculo(self, veiculo: Veiculo):
         if isinstance(veiculo, Veiculo):
             self.__veiculo = veiculo
 
