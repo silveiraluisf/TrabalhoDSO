@@ -83,7 +83,7 @@ class ControladorCliente():
 
     def remover_cliente_pf_pelo_nome(self):
 
-        nome = self.__tela_cliente.pesquisar_cliente_pf_pelo_nome()
+        nome = self.__tela_cliente_pesquisar_pf.pesquisar_nome_pf()
 
         for cliente in self.__dao_pf.get_all():
 
@@ -92,7 +92,9 @@ class ControladorCliente():
 
             else:
                 self.__dao_pf.remove(cliente)
+
                 self.__tela_cliente.sucesso()
+
                 self.abre_tela()
 
         self.__tela_cliente.falha()
@@ -244,19 +246,9 @@ class ControladorCliente():
 
             if nome == cliente.nome:
 
-                return self.__tela_cliente_pf_resultado
+                return cliente
 
 
-                # self.__tela_cliente.resultado_cliente_pf_pelo_nome(
-                #     {'codigo': cliente.codigo, "nome": cliente.nome, "telefone": cliente.telefone,
-                #      "endereco": cliente.endereco, "data_nascimento": cliente.data_nascimento, "cpf": cliente.cpf,
-                #      "rg": cliente.rg, "orgao_emissor": cliente.orgao_emissor, "veiculo": cliente.veiculo.modelo,
-                #      "placa": cliente.veiculo.placa})
-                #
-                # return cliente
-
-        # self.__tela_cliente.falha()
-        # self.pesquisar_cliente_pf_pelo_nome()
 
     def retornar_cliente_pelo_nome(self):
 
