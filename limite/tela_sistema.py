@@ -1,4 +1,4 @@
-import PySimpleGUI as sg 
+import PySimpleGUI as sg
 
 class TelaSistema:
 
@@ -17,11 +17,16 @@ class TelaSistema:
         self.__window = sg.Window('Sistema Veiculo').Layout(layout)
 
     def tela_opcoes(self):
-        self.init_components()    
+
+        self.init_components()
+
         botao, valores = self.__window.Read()
+
         if botao is None:
             botao = 0
+
         self.fechar_tela()
+
         return int(botao)
 
     def fechar_tela(self):

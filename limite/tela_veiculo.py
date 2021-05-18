@@ -18,11 +18,16 @@ class TelaVeiculo():
         self.__window = sg.Window('Tela Veiculo').Layout(layout)
 
     def tela_opcoes(self):
-        self.init_components_tela_opcoes()    
+
+        self.init_components_tela_opcoes()
+
         botao, valores = self.__window.Read()
+
         if botao is None:
             botao = 0
+
         self.fechar_tela()
+
         return int(botao)
 
     def fechar_tela(self):

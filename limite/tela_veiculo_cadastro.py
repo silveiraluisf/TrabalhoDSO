@@ -25,3 +25,4 @@ class TelaCadastroVeiculo():
 
     def fechar_tela(self):
         self.__window.Close()
+

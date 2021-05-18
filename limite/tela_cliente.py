@@ -11,7 +11,7 @@ class TelaCliente:
                   [sg.Button('Cadastrar Cliente', key='1', size=(30, 1))],
                   [sg.Button('Remover Cliente', key='2', size=(30, 1))],
                   [sg.Button('Editar Cliente', key='3', size=(30, 1))],
-                  [sg.Button('Excluir Cliente', key='4', size=(30, 1))],
+                  [sg.Button('Listar Clientes', key='4', size=(30, 1))],
                   [sg.Button('Pesquisar Cliente Pelo Nome', key='5', size=(30, 1))],
                   [sg.Button('Voltar', key='0', size=(30, 1))]]
                   
@@ -105,14 +105,15 @@ class TelaCliente:
 
     def tipo_de_cliente(self):
         # escolhe se é cliente pessoa física ou jurídica
-        print("")
-        print("--- Selecione o tipo de cliente: ---")
-        print("")
-        print("1 - Pessoa Física")
-        print("2 - Pessoa Jurídica")
-        print("0 - Voltar")
-        print("")
-        print("")
+
+        # print("")
+        # print("--- Selecione o tipo de cliente: ---")
+        # print("")
+        # print("1 - Pessoa Física")
+        # print("2 - Pessoa Jurídica")
+        # print("0 - Voltar")
+        # print("")
+        # print("")
 
         while True:
             try:
@@ -125,31 +126,34 @@ class TelaCliente:
  
     
     def listar_clientes_pf(self, dados_cliente):
-        print("====== CÓDIGO CLIENTE: ", dados_cliente["codigo"],"======")
-        print("")        
-        print("NOME CLIENTE: ", dados_cliente["nome"])
-        print("FONE CLIENTE: ", dados_cliente["telefone"])
-        print("END CLIENTE: ", dados_cliente["endereco"])
-        print("DATA NASC.: ", dados_cliente["data_nascimento"])
-        print("CPF: ", dados_cliente["cpf"])
-        print("R.G.: ", dados_cliente["rg"])
-        print("ÓRGÃO EMISSOR: ", dados_cliente["orgao_emissor"])
-        print("VEÍCULO: ", dados_cliente["veiculo"])
-        print("PLACA: ", dados_cliente["placa"])
-        print("")
+        pass
+
+        # print("====== CÓDIGO CLIENTE: ", dados_cliente["codigo"],"======")
+        # print("")
+        # print("NOME CLIENTE: ", dados_cliente["nome"])
+        # print("FONE CLIENTE: ", dados_cliente["telefone"])
+        # print("END CLIENTE: ", dados_cliente["endereco"])
+        # print("DATA NASC.: ", dados_cliente["data_nascimento"])
+        # print("CPF: ", dados_cliente["cpf"])
+        # print("R.G.: ", dados_cliente["rg"])
+        # print("ÓRGÃO EMISSOR: ", dados_cliente["orgao_emissor"])
+        # print("VEÍCULO: ", dados_cliente["veiculo"])
+        # print("PLACA: ", dados_cliente["placa"])
+        # print("")
 
 
     def listar_clientes_pj(self, dados_cliente):
-        print("====== CÓDIGO CLIENTE: ", dados_cliente["codigo"],"======")
-        print("")
-        print("RAZÃO SOCIAL CLIENTE: ", dados_cliente["nome"])
-        print("FONE CLIENTE: ", dados_cliente["telefone"])
-        print("END CLIENTE: ", dados_cliente["endereco"])
-        print("DATA FUND..: ", dados_cliente["data_fundacao"])
-        print("CNPJ: ", dados_cliente["cnpj"])
-        print("VEÍCULO: ", dados_cliente["veiculo"])
-        print("PLACA: ", dados_cliente["placa"])
-        print("")
+        pass
+        # print("====== CÓDIGO CLIENTE: ", dados_cliente["codigo"],"======")
+        # print("")
+        # print("RAZÃO SOCIAL CLIENTE: ", dados_cliente["nome"])
+        # print("FONE CLIENTE: ", dados_cliente["telefone"])
+        # print("END CLIENTE: ", dados_cliente["endereco"])
+        # print("DATA FUND..: ", dados_cliente["data_fundacao"])
+        # print("CNPJ: ", dados_cliente["cnpj"])
+        # print("VEÍCULO: ", dados_cliente["veiculo"])
+        # print("PLACA: ", dados_cliente["placa"])
+        # print("")
 
     def pesquisar_cliente_pf_pelo_nome(self):
         print("")
