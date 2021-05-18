@@ -128,32 +128,10 @@ class TelaCliente:
     def listar_clientes_pf(self, dados_cliente):
         pass
 
-        # print("====== CÓDIGO CLIENTE: ", dados_cliente["codigo"],"======")
-        # print("")
-        # print("NOME CLIENTE: ", dados_cliente["nome"])
-        # print("FONE CLIENTE: ", dados_cliente["telefone"])
-        # print("END CLIENTE: ", dados_cliente["endereco"])
-        # print("DATA NASC.: ", dados_cliente["data_nascimento"])
-        # print("CPF: ", dados_cliente["cpf"])
-        # print("R.G.: ", dados_cliente["rg"])
-        # print("ÓRGÃO EMISSOR: ", dados_cliente["orgao_emissor"])
-        # print("VEÍCULO: ", dados_cliente["veiculo"])
-        # print("PLACA: ", dados_cliente["placa"])
-        # print("")
-
 
     def listar_clientes_pj(self, dados_cliente):
         pass
-        # print("====== CÓDIGO CLIENTE: ", dados_cliente["codigo"],"======")
-        # print("")
-        # print("RAZÃO SOCIAL CLIENTE: ", dados_cliente["nome"])
-        # print("FONE CLIENTE: ", dados_cliente["telefone"])
-        # print("END CLIENTE: ", dados_cliente["endereco"])
-        # print("DATA FUND..: ", dados_cliente["data_fundacao"])
-        # print("CNPJ: ", dados_cliente["cnpj"])
-        # print("VEÍCULO: ", dados_cliente["veiculo"])
-        # print("PLACA: ", dados_cliente["placa"])
-        # print("")
+
 
     def pesquisar_cliente_pf_pelo_nome(self):
         print("")
